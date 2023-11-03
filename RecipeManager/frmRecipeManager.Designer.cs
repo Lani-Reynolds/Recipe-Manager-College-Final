@@ -32,7 +32,7 @@
             this.lbRecipeList = new System.Windows.Forms.ListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tsmiOptions = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiCreate = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCreateNew = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSave = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.lblName = new System.Windows.Forms.Label();
@@ -72,31 +72,31 @@
             // tsmiOptions
             // 
             this.tsmiOptions.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiCreate,
+            this.tsmiCreateNew,
             this.tsmiSave,
             this.tsmiDelete});
             this.tsmiOptions.Name = "tsmiOptions";
             this.tsmiOptions.Size = new System.Drawing.Size(61, 20);
             this.tsmiOptions.Text = "Options";
             // 
-            // tsmiCreate
+            // tsmiCreateNew
             // 
-            this.tsmiCreate.Name = "tsmiCreate";
-            this.tsmiCreate.Size = new System.Drawing.Size(108, 22);
-            this.tsmiCreate.Text = "Create";
-            this.tsmiCreate.Click += new System.EventHandler(this.tsmiCreate_Click);
+            this.tsmiCreateNew.Name = "tsmiCreateNew";
+            this.tsmiCreateNew.Size = new System.Drawing.Size(180, 22);
+            this.tsmiCreateNew.Text = "Create New";
+            this.tsmiCreateNew.Click += new System.EventHandler(this.tsmiCreateNew_Click);
             // 
             // tsmiSave
             // 
             this.tsmiSave.Name = "tsmiSave";
-            this.tsmiSave.Size = new System.Drawing.Size(108, 22);
+            this.tsmiSave.Size = new System.Drawing.Size(180, 22);
             this.tsmiSave.Text = "Save";
             this.tsmiSave.Click += new System.EventHandler(this.tsmiSave_Click);
             // 
             // tsmiDelete
             // 
             this.tsmiDelete.Name = "tsmiDelete";
-            this.tsmiDelete.Size = new System.Drawing.Size(108, 22);
+            this.tsmiDelete.Size = new System.Drawing.Size(180, 22);
             this.tsmiDelete.Text = "Delete";
             this.tsmiDelete.Click += new System.EventHandler(this.tsmiDelete_Click);
             // 
@@ -215,7 +215,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem tsmiOptions;
         private System.Windows.Forms.ToolStripMenuItem tsmiSave;
-        private System.Windows.Forms.ToolStripMenuItem tsmiCreate;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCreateNew;
         private System.Windows.Forms.ToolStripMenuItem tsmiDelete;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblDescription;

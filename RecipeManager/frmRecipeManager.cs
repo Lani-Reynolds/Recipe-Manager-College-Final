@@ -16,6 +16,7 @@ namespace RecipeManager
     {
         //Where the user's files are kept, this is usually in the %APPDATA% (C:/Users/<user>/AppData/Roaming)
         public string UserRecipesPath = Application.UserAppDataPath;
+        public string recipeFile;
 
         public frmRecipeManager() => InitializeComponent();
 
@@ -28,23 +29,28 @@ namespace RecipeManager
 
         private void ClearContentBoxes()
         {
-            /* Code Features */
-
-            // Clear recipe editing content textboxes
+            // Clear text in the name and decription boxes and reset count on the ingredients and directions boxes
+            txtRecipeName.Text = "";
+            rtxtDescription.Text = "";
+            rtxtIngredients.Text = "1.";
+            rtxtDirections.Text = "Step 1.";
         }
 
-        private void tsmiCreate_Click(object sender, EventArgs e)
+        private void GenerateRecipePath()
+        {
+            // Delcare a string that holds the current recipe file name
+            // Files end with `.recipe`
+            recipeFile = Path.Combine(UserRecipesPath, txtRecipeName.Text.Replace(" ", "-") + ".recipe");
+        }
+
+        private void tsmiCreateNew_Click(object sender, EventArgs e)
         {
             ClearContentBoxes();
-
-            /* Code Features */
         }
 
         private void tsmiSave_Click(object sender, EventArgs e)
         {
-            // Delcare a string that holds the current recipe file name
-            // Files end with `.recipe`
-            string recipeFile = Path.Combine(UserRecipesPath, txtRecipeName.Text.Replace(" ", "-") + ".recipe");
+            GenerateRecipePath();
 
             Console.WriteLine(recipeFile);
 
@@ -68,15 +74,34 @@ namespace RecipeManager
 
         private void tsmiDelete_Click(object sender, EventArgs e)
         {
+            GenerateRecipePath();
 
-            ClearContentBoxes();
+            // Check if the file exists
+            if (File.Exists(recipeFile))
+            {
+                // Strings to display in the message box
+                string msg = "Are you sure you would like to delete this recipe?";
+                string caption = "Delete Recipe";
 
+                // Yes or no buttons
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
 
-            /* Code Features */
+                // Get result from the message box
+                DialogResult result;
+                result = MessageBox.Show(msg, caption, buttons);
 
-            // Open dialog to confirm delete of current recipe selected
-            // Delete current recipe file
-            // Clear recipe editing content textboxes
+                // If the result equals yes, clear the contents and delete the file
+                if (result == DialogResult.Yes)
+                {
+                    ClearContentBoxes();
+                    File.Delete(recipeFile);
+                }
+            }
+            // If the file does not exist, display an error message
+            else
+            {
+                MessageBox.Show("File not found", "Error");
+            }
         }
 
         private void lbRecipeList_SelectedValueChanged(object sender, EventArgs e)
@@ -93,10 +118,5 @@ namespace RecipeManager
         }
 
         private void btnExit_Click(object sender, EventArgs e) => Close();
-
-        private void btnMinimize_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
-        }
     }
 }

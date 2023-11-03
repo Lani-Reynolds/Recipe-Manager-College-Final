@@ -80,14 +80,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Minimize.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Minimize1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Close.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
