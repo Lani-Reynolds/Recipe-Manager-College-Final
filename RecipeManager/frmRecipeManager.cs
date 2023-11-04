@@ -14,18 +14,34 @@ namespace RecipeManager
 {
     public partial class frmRecipeManager : Form
     {
-        //Where the user's files are kept, this is usually in the %APPDATA% (C:/Users/<user>/AppData/Roaming)
-        public string UserRecipesPath = Application.UserAppDataPath;
-        public string recipeFile;
+        // Global string of where the user's files are kept, this is usually in the %APPDATA% (C:/Users/<user>/AppData/Roaming)
+        public string userRecipesPath = Application.UserAppDataPath;
+
+        // Global recipeFilePath string to be used when needed to access the current recipe file
+        public string recipeFilePath;
+
+        // Global selection string to be used when constructing the recipeFilePath
+        public string selection = "";
 
         public frmRecipeManager() => InitializeComponent();
 
         private void Load_Files()
         {
-            /* Code Features */
+            // Iterate through each file in the directory
+            foreach (string recipeFile in Directory.GetFiles(userRecipesPath))
+            {
+                // Construct an array of the file path split at each `\`, use escape character to reach
+                string[] recipeFileArray = recipeFile.Split('\\');
 
-            // Iterate over each file finding the name of each recipe, and loading them into list box
+                // Construct a string using the last index in the array and replacing dashes with spaces and removing the `.recipe`
+                string recipeFileString = recipeFileArray[recipeFileArray.Length - 1].Replace("-", " ").Replace(".recipe", "");
+
+                // Add recipeFileString to the listbox
+                lbRecipeList.Items.Add(recipeFileString);
+            }
         }
+
+        private void GenerateRecipePath() => recipeFilePath = Path.Combine(userRecipesPath, selection.Replace(" ", "-") + ".recipe");    // Delcare a string that holds the current recipe file name files end with `.recipe`
 
         private void ClearContentBoxes()
         {
@@ -36,37 +52,43 @@ namespace RecipeManager
             rtxtDirections.Text = "Step 1.";
         }
 
-        private void GenerateRecipePath()
-        {
-            // Delcare a string that holds the current recipe file name
-            // Files end with `.recipe`
-            recipeFile = Path.Combine(UserRecipesPath, txtRecipeName.Text.Replace(" ", "-") + ".recipe");
-        }
-
-        private void tsmiCreateNew_Click(object sender, EventArgs e)
-        {
-            ClearContentBoxes();
-        }
+        private void tsmiCreateNew_Click(object sender, EventArgs e) => ClearContentBoxes();
 
         private void tsmiSave_Click(object sender, EventArgs e)
         {
-            GenerateRecipePath();
+            // Clear selection variable
+            selection = "";
 
-            Console.WriteLine(recipeFile);
+            // Strings to display in the message box
+            string msg = "Please enter a file name";
+            string caption = "Missing File Name";
 
-            File.WriteAllText(recipeFile, "Hello World!");
+            // If there is text in the text box
+            if (txtRecipeName.Text != "")
+            {
+                // Set selection variable to text in recipe name textbox
+                selection += txtRecipeName.Text;
 
+                GenerateRecipePath();
+
+                // Create recipe using the file path and write 'Hello World' in the file
+                File.WriteAllText(recipeFilePath, "Hello World!");
+
+                // Add recipe name to the listbox
+                lbRecipeList.Items.Add(txtRecipeName.Text);
+            }
+            else MessageBox.Show(msg, caption);
+            
 
             /* Code Features */
 
-            string example = $"Name:{txtRecipeName.Text}\n" +
-                             $"Description:{rtxtDescription.Text}\n" +
-                             $"Ingredients:1/4_tsp-Black_Pepper|1_tbsp-Olive_Oil" + //This is an example of how ingredients will be displayed in the file
-                             $"Directions: {rtxtDirections.Text}";
+            //string example = $"Name:{txtRecipeName.Text}\n" +
+            //                 $"Description:{rtxtDescription.Text}\n" +
+            //                 $"Ingredients:1/4_tsp-Black_Pepper|1_tbsp-Olive_Oil" + //This is an example of how ingredients will be displayed in the file
+            //                 $"Directions: {rtxtDirections.Text}";
 
             // Construct a string to be saved to the file
             // Save contents of text boxes to recipe file
-            // Add new recipe name to listbox
 
             // Extra credit
             // Analyze the contents of each of the textboxes as raw string, and search for raw newline unicode characters, we're searching for r'\n'
@@ -77,7 +99,7 @@ namespace RecipeManager
             GenerateRecipePath();
 
             // Check if the file exists
-            if (File.Exists(recipeFile))
+            if (File.Exists(recipeFilePath))
             {
                 // Strings to display in the message box
                 string msg = "Are you sure you would like to delete this recipe?";
@@ -87,14 +109,21 @@ namespace RecipeManager
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
 
                 // Get result from the message box
-                DialogResult result;
-                result = MessageBox.Show(msg, caption, buttons);
+                DialogResult result = MessageBox.Show(msg, caption, buttons);
 
-                // If the result equals yes, clear the contents and delete the file
+                // If the result equals yes, clear the contents, delete the file, and remove the recipe name from listbox
                 if (result == DialogResult.Yes)
                 {
                     ClearContentBoxes();
-                    File.Delete(recipeFile);
+
+                    // Delete file
+                    File.Delete(recipeFilePath);
+
+                    // Remove selection from the listbox
+                    lbRecipeList.Items.Remove(selection);
+
+                    // Set selected item to null
+                    lbRecipeList.SelectedItem = null;
                 }
             }
             // If the file does not exist, display an error message
@@ -106,14 +135,25 @@ namespace RecipeManager
 
         private void lbRecipeList_SelectedValueChanged(object sender, EventArgs e)
         {
+            // Gaurd clause for if the selected item in the list box is null, do nothing
+            if (lbRecipeList.SelectedItem == null) return;
+
+            // Clear selection variable
+            selection = "";
+
+            // Set selection variable to the selected item in the listbox as a string
+            selection += lbRecipeList.SelectedItem.ToString();
+
+
             /* Code Features */
 
             // Load respective recipe file contents into text boxes
+
         }
 
         private void frmRecipeManager_Load(object sender, EventArgs e)
         {
-            //This is where we would load any existing files on startup
+            // This is where we load any existing files on startup
             Load_Files();
         }
 
