@@ -82,21 +82,21 @@
             // tsmiCreateNew
             // 
             this.tsmiCreateNew.Name = "tsmiCreateNew";
-            this.tsmiCreateNew.Size = new System.Drawing.Size(180, 22);
+            this.tsmiCreateNew.Size = new System.Drawing.Size(135, 22);
             this.tsmiCreateNew.Text = "Create New";
             this.tsmiCreateNew.Click += new System.EventHandler(this.tsmiCreateNew_Click);
             // 
             // tsmiSave
             // 
             this.tsmiSave.Name = "tsmiSave";
-            this.tsmiSave.Size = new System.Drawing.Size(180, 22);
+            this.tsmiSave.Size = new System.Drawing.Size(135, 22);
             this.tsmiSave.Text = "Save";
             this.tsmiSave.Click += new System.EventHandler(this.tsmiSave_Click);
             // 
             // tsmiDelete
             // 
             this.tsmiDelete.Name = "tsmiDelete";
-            this.tsmiDelete.Size = new System.Drawing.Size(180, 22);
+            this.tsmiDelete.Size = new System.Drawing.Size(135, 22);
             this.tsmiDelete.Text = "Delete";
             this.tsmiDelete.Click += new System.EventHandler(this.tsmiDelete_Click);
             // 
@@ -157,7 +157,8 @@
             this.rtxtIngredients.Name = "rtxtIngredients";
             this.rtxtIngredients.Size = new System.Drawing.Size(430, 112);
             this.rtxtIngredients.TabIndex = 3;
-            this.rtxtIngredients.Text = "1.";
+            this.rtxtIngredients.Text = "1. ";
+            this.rtxtIngredients.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rtxtIngredients_KeyDown);
             // 
             // rtxtDirections
             // 
@@ -165,7 +166,7 @@
             this.rtxtDirections.Name = "rtxtDirections";
             this.rtxtDirections.Size = new System.Drawing.Size(430, 112);
             this.rtxtDirections.TabIndex = 4;
-            this.rtxtDirections.Text = "Step 1.";
+            this.rtxtDirections.Text = "Step 1. ";
             // 
             // btnExit
             // 
