@@ -10,24 +10,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using System.Text.RegularExpressions;
 
 namespace RecipeManager
 {
     public partial class frmRecipeManager : Form
     {
-        // Global int for the IngrdientIterator to count the number of lines in the ingredients
-        public int IngredientIterator;
-
         // Global string of where the user's files are kept, this is usually in the %APPDATA% (C:/Users/<user>/AppData/Roaming)
         public string UserRecipesPath = Application.UserAppDataPath;
 
         // Global RecipeFilePath string to be used when needed to access the current recipe file
         public string RecipeFilePath;
 
-        // Global Selection string to be used when constructing the RecipeFilePath
-        public string Selection = "";
+        // Global CurrentRecipe string to be used when constructing the RecipeFilePath
+        public string CurrentRecipe = "";
 
-        public frmRecipeManager() => InitializeComponent();
+        public frmRecipeManager() 
+        { 
+            InitializeComponent();
+
+            // Set the first line of both the ingredients and the directions to bulleted
+            rtxtIngredients.SelectionBullet = true;
+            rtxtDirections.SelectionBullet = true;
+        }
 
         private void Load_Files()
         {
@@ -45,30 +50,23 @@ namespace RecipeManager
             }
         }
 
-        private void GenerateRecipePath() => RecipeFilePath = Path.Combine(UserRecipesPath, Selection.Replace(" ", "-") + ".recipe");    // Delcare a string that holds the current recipe file name files end with `.recipe`
+        private void GenerateRecipePath() => RecipeFilePath = Path.Combine(UserRecipesPath, CurrentRecipe.Replace(" ", "-") + ".recipe");    // Delcare a string that holds the current recipe file name files end with `.recipe`
 
         private void ClearContentBoxes()
         {
             // Clear text in the name and decription boxes and reset count on the ingredients and directions boxes
             txtRecipeName.Text = "";
             rtxtDescription.Text = "";
-            rtxtIngredients.Text = "1.";
-            rtxtDirections.Text = "Step 1. ";
+            rtxtIngredients.Text = "";
+            rtxtDirections.Text = "";
         }
 
-        private void tsmiCreateNew_Click(object sender, EventArgs e)
-        {
-            // Set the IngredientIterator to the number of lines in the Ingredient textbox
-            IngredientIterator = rtxtIngredients.Lines.Length;
-
-            // Call ClearContentBoxes
-            ClearContentBoxes();
-        }
+        private void tsmiCreateNew_Click(object sender, EventArgs e) => ClearContentBoxes();
 
         private void tsmiSave_Click(object sender, EventArgs e)
         {
-            // Clear Selection variable
-            Selection = "";
+            // Clear CurrentRecipe variable (if needed)
+            CurrentRecipe = "";
 
             // Strings to display in the message box
             string msg = "Please enter a file name";
@@ -77,18 +75,45 @@ namespace RecipeManager
             // If there is text in the text box
             if (txtRecipeName.Text != "")
             {
-                // Set Selection variable to text in recipe name textbox
-                Selection += txtRecipeName.Text;
+                // Set CurrentRecipe variable to text in recipe name textbox
+                CurrentRecipe = txtRecipeName.Text;
 
                 GenerateRecipePath();
 
-                // Create recipe using the file path and write 'Hello World' in the file
-                File.WriteAllText(RecipeFilePath, "Hello World!");
-
                 // Add recipe name to the listbox
                 lbRecipeList.Items.Add(txtRecipeName.Text);
+
+                // Construct an array that is the size of the current number of lines in the richtextbox
+                string[] ingredientArray = new string[rtxtIngredients.Lines.Length];
+
+                // For loop that iterates through each line in the richtextbox
+                for (int i = 0; i < rtxtIngredients.Lines.Length; i++)
+                {
+                    // Get the first character of the current line iteration
+                    int currentLineStart = rtxtIngredients.GetFirstCharIndexFromLine(i);
+
+                    // Set the cursor to the current line iteration
+                    rtxtIngredients.SelectionStart = currentLineStart;
+
+                    // If the line does not have a bullet point, place a bullet point
+                    if (!rtxtIngredients.SelectionBullet)
+                    {
+                        rtxtIngredients.SelectionBullet = true;
+                    }
+
+                    // Place a "~" in front of the current line iteration
+                    ingredientArray[i] = "~" + rtxtIngredients.Lines[i];
+                }
+
+                // Join the ingredient array with "\n" between each count
+                string formattedIngredients = string.Join("\n", ingredientArray);
+
+                // Write to the file, the new formatted ingredient list
+                File.WriteAllText(RecipeFilePath, formattedIngredients);
             }
             else MessageBox.Show(msg, caption);
+
+
             
 
             /* Code Features */
@@ -100,9 +125,6 @@ namespace RecipeManager
 
             // Construct a string to be saved to the file
             // Save contents of text boxes to recipe file
-
-            // Extra credit
-            // Analyze the contents of each of the textboxes as raw string, and search for raw newline unicode characters, we're searching for r'\n'
         }
 
         private void tsmiDelete_Click(object sender, EventArgs e)
@@ -130,8 +152,8 @@ namespace RecipeManager
                     // Delete file
                     File.Delete(RecipeFilePath);
 
-                    // Remove Selection from the listbox
-                    lbRecipeList.Items.Remove(Selection);
+                    // Remove CurrentRecipe from the listbox
+                    lbRecipeList.Items.Remove(CurrentRecipe);
 
                     // Set selected item to null
                     lbRecipeList.SelectedItem = null;
@@ -149,11 +171,11 @@ namespace RecipeManager
             // Gaurd clause for if the selected item in the list box is null, do nothing
             if (lbRecipeList.SelectedItem == null) return;
 
-            // Clear Selection variable
-            Selection = "";
+            // Clear CurrentRecipe variable
+            CurrentRecipe = "";
 
-            // Set Selection variable to the selected item in the listbox as a string
-            Selection += lbRecipeList.SelectedItem.ToString();
+            // Set CurrentRecipe variable to the selected item in the listbox as a string
+            CurrentRecipe = lbRecipeList.SelectedItem.ToString();
 
 
             /* Code Features */
@@ -162,52 +184,26 @@ namespace RecipeManager
 
         }
 
+        // This event handler is attached to the ingredients and direction richtextboxes
+        private void rtxt_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Set the sender to a RichTextBox
+            RichTextBox richTextBox = (RichTextBox)sender;
+
+            // If the user presses "control b"
+            if (e.Control && e.KeyCode == Keys.B)
+            {
+                // Bullet tne selected line
+                richTextBox.SelectionBullet = true;
+            }
+        }
+
         private void frmRecipeManager_Load(object sender, EventArgs e)
         {
-            // Set the IngredientIterator to the number of lines in the Ingredient textbox
-            IngredientIterator = rtxtIngredients.Lines.Length;
-
             // This is where we load any existing files on startup
             Load_Files();
         }
 
         private void btnExit_Click(object sender, EventArgs e) => Close();
-
-        private void rtxtIngredients_KeyDown(object sender, KeyEventArgs e)
-        {
-            // Set the IngredientIterator to the number of lines in the Ingredient textbox
-            IngredientIterator = rtxtIngredients.Lines.Length;
-
-            // Check if the period key is pressed
-            if (e.KeyCode == Keys.OemPeriod)
-            {
-                // Prevent key from being pressed
-                e.SuppressKeyPress = true;
-            }
-
-            // Check if backspace or delete key is pressed
-            if (e.KeyCode == Keys.Back || e.KeyCode == Keys.Delete)
-            {
-                // Check if the character before the cursor is a period
-                if (rtxtIngredients.Text[rtxtIngredients.SelectionStart - 1] == '.')
-                {
-                    // Cancel the key event to prevent deletion
-                    e.Handled = true;
-                }
-            }
-
-            // Check if the enter key is pressed
-            if (e.KeyCode == Keys.Enter)
-            {
-                // Prevent key from being pressed
-                e.SuppressKeyPress = true;
-
-                // Iterate the IngrdientIterator
-                IngredientIterator++;
-
-                // Append a new line, the current IngrediantIterator, a period, and a space
-                rtxtIngredients.AppendText($"\n{IngredientIterator}. ");
-            }
-        }
     }
 }

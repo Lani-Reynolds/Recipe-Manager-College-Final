@@ -44,6 +44,7 @@
             this.rtxtIngredients = new System.Windows.Forms.RichTextBox();
             this.rtxtDirections = new System.Windows.Forms.RichTextBox();
             this.btnExit = new System.Windows.Forms.Button();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,7 +75,9 @@
             this.tsmiOptions.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiCreateNew,
             this.tsmiSave,
-            this.tsmiDelete});
+            this.tsmiDelete,
+            this.helpToolStripMenuItem});
+            this.tsmiOptions.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsmiOptions.Name = "tsmiOptions";
             this.tsmiOptions.Size = new System.Drawing.Size(61, 20);
             this.tsmiOptions.Text = "Options";
@@ -82,30 +85,30 @@
             // tsmiCreateNew
             // 
             this.tsmiCreateNew.Name = "tsmiCreateNew";
-            this.tsmiCreateNew.Size = new System.Drawing.Size(135, 22);
+            this.tsmiCreateNew.Size = new System.Drawing.Size(180, 22);
             this.tsmiCreateNew.Text = "Create New";
             this.tsmiCreateNew.Click += new System.EventHandler(this.tsmiCreateNew_Click);
             // 
             // tsmiSave
             // 
             this.tsmiSave.Name = "tsmiSave";
-            this.tsmiSave.Size = new System.Drawing.Size(135, 22);
+            this.tsmiSave.Size = new System.Drawing.Size(180, 22);
             this.tsmiSave.Text = "Save";
             this.tsmiSave.Click += new System.EventHandler(this.tsmiSave_Click);
             // 
             // tsmiDelete
             // 
             this.tsmiDelete.Name = "tsmiDelete";
-            this.tsmiDelete.Size = new System.Drawing.Size(135, 22);
+            this.tsmiDelete.Size = new System.Drawing.Size(180, 22);
             this.tsmiDelete.Text = "Delete";
             this.tsmiDelete.Click += new System.EventHandler(this.tsmiDelete_Click);
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(192, 41);
+            this.lblName.Location = new System.Drawing.Point(214, 41);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(38, 13);
+            this.lblName.Size = new System.Drawing.Size(37, 13);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "&Name:";
             // 
@@ -114,59 +117,61 @@
             this.lblDescription.AutoSize = true;
             this.lblDescription.Location = new System.Drawing.Point(172, 70);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(63, 13);
+            this.lblDescription.Size = new System.Drawing.Size(79, 13);
             this.lblDescription.TabIndex = 0;
             this.lblDescription.Text = "&Description:";
             // 
             // lblIngredients
             // 
             this.lblIngredients.AutoSize = true;
-            this.lblIngredients.Location = new System.Drawing.Point(168, 194);
+            this.lblIngredients.Location = new System.Drawing.Point(172, 194);
             this.lblIngredients.Name = "lblIngredients";
-            this.lblIngredients.Size = new System.Drawing.Size(62, 13);
+            this.lblIngredients.Size = new System.Drawing.Size(79, 13);
             this.lblIngredients.TabIndex = 0;
             this.lblIngredients.Text = "&Ingredients:";
             // 
             // lblDirections
             // 
             this.lblDirections.AutoSize = true;
-            this.lblDirections.Location = new System.Drawing.Point(173, 318);
+            this.lblDirections.Location = new System.Drawing.Point(178, 318);
             this.lblDirections.Name = "lblDirections";
-            this.lblDirections.Size = new System.Drawing.Size(57, 13);
+            this.lblDirections.Size = new System.Drawing.Size(73, 13);
             this.lblDirections.TabIndex = 0;
             this.lblDirections.Text = "&Directions:";
             // 
             // txtRecipeName
             // 
-            this.txtRecipeName.Location = new System.Drawing.Point(236, 41);
+            this.txtRecipeName.Location = new System.Drawing.Point(257, 41);
             this.txtRecipeName.Name = "txtRecipeName";
-            this.txtRecipeName.Size = new System.Drawing.Size(430, 20);
+            this.txtRecipeName.Size = new System.Drawing.Size(409, 20);
             this.txtRecipeName.TabIndex = 1;
             // 
             // rtxtDescription
             // 
-            this.rtxtDescription.Location = new System.Drawing.Point(236, 70);
+            this.rtxtDescription.Location = new System.Drawing.Point(257, 70);
             this.rtxtDescription.Name = "rtxtDescription";
-            this.rtxtDescription.Size = new System.Drawing.Size(430, 112);
+            this.rtxtDescription.Size = new System.Drawing.Size(409, 112);
             this.rtxtDescription.TabIndex = 2;
             this.rtxtDescription.Text = "";
             // 
             // rtxtIngredients
             // 
-            this.rtxtIngredients.Location = new System.Drawing.Point(236, 194);
+            this.rtxtIngredients.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxtIngredients.Location = new System.Drawing.Point(257, 194);
             this.rtxtIngredients.Name = "rtxtIngredients";
-            this.rtxtIngredients.Size = new System.Drawing.Size(430, 112);
+            this.rtxtIngredients.Size = new System.Drawing.Size(409, 112);
             this.rtxtIngredients.TabIndex = 3;
-            this.rtxtIngredients.Text = "1. ";
-            this.rtxtIngredients.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rtxtIngredients_KeyDown);
+            this.rtxtIngredients.Text = "";
+            this.rtxtIngredients.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rtxt_KeyDown);
             // 
             // rtxtDirections
             // 
-            this.rtxtDirections.Location = new System.Drawing.Point(236, 318);
+            this.rtxtDirections.Location = new System.Drawing.Point(257, 318);
             this.rtxtDirections.Name = "rtxtDirections";
-            this.rtxtDirections.Size = new System.Drawing.Size(430, 112);
+            this.rtxtDirections.Size = new System.Drawing.Size(409, 112);
             this.rtxtDirections.TabIndex = 4;
-            this.rtxtDirections.Text = "Step 1. ";
+            this.rtxtDirections.Text = "";
+            this.rtxtDirections.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rtxt_KeyDown);
             // 
             // btnExit
             // 
@@ -178,6 +183,12 @@
             this.btnExit.Text = "E&xit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.helpToolStripMenuItem.Text = "Help";
             // 
             // frmRecipeManager
             // 
@@ -197,6 +208,7 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lbRecipeList);
             this.Controls.Add(this.menuStrip1);
+            this.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(700, 510);
             this.Name = "frmRecipeManager";
@@ -227,6 +239,7 @@
         private System.Windows.Forms.RichTextBox rtxtIngredients;
         private System.Windows.Forms.RichTextBox rtxtDirections;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
     }
 }
 
