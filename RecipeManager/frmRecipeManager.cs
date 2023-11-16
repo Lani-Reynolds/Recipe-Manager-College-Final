@@ -61,6 +61,12 @@ namespace RecipeManager
             rtxtDirections.Text = "";
         }
 
+        private void frmRecipeManager_Load(object sender, EventArgs e)
+        {
+            // This is where we load any existing files on startup
+            Load_Files();
+        }
+
         private void tsmiCreateNew_Click(object sender, EventArgs e) => ClearContentBoxes();
 
         private void tsmiSave_Click(object sender, EventArgs e)
@@ -196,12 +202,6 @@ namespace RecipeManager
                 // Bullet tne selected line
                 richTextBox.SelectionBullet = true;
             }
-        }
-
-        private void frmRecipeManager_Load(object sender, EventArgs e)
-        {
-            // This is where we load any existing files on startup
-            Load_Files();
         }
 
         private void btnExit_Click(object sender, EventArgs e) => Close();
