@@ -41,7 +41,7 @@ namespace RecipeManager
             rtxtDirections.SelectionBullet = true;
         }
 
-        private void Load_Files()
+        private void LoadFiles()
         {
             // Iterate through each file in the directory - Sara Walker
             foreach (string recipeFile in Directory.GetFiles(UserRecipesPath))
@@ -70,8 +70,36 @@ namespace RecipeManager
             rtxtDirections.Text = "";
         }
 
+        //
+        private string[] ArrayBuilder(RichTextBox richTextBox)
+        {
+            // Construct an array that is the size of the current number of lines in the richtextbox - Sara Walker
+            string[] array = new string[richTextBox.Lines.Length];
+
+            // For loop that iterates through each line in the richtextbox - Sara Walker
+            for (int i = 0; i < richTextBox.Lines.Length; i++)
+            {
+                // Get the first character of the current line iteration - Sara Walker
+                int currentLineStart = richTextBox.GetFirstCharIndexFromLine(i);
+
+                // Set the cursor to the current line iteration - Sara Walker
+                richTextBox.SelectionStart = currentLineStart;
+
+                // If the line does not have a bullet point, place a bullet point - Sara Walker
+                if (!richTextBox.SelectionBullet)
+                {
+                    richTextBox.SelectionBullet = true;
+                }
+
+                // Place a "~" in front of the current line iteration - Sara Walker
+                array[i] = "~" + richTextBox.Lines[i];
+            }
+
+            return array;
+        }
+
         // Method to contruct the string of file contents - Sara Walker
-        private string ContentToSave()
+        private string BuildContentString()
         {
             // Construct a string for the name - Aaron White
             string nameString = $"Name:\n{txtRecipeName.Text}\n";
@@ -79,55 +107,11 @@ namespace RecipeManager
             // Construct a string for the description - Aaron White
             string descriptionString = $"Description:\n{rtxtDescription.Text}\n";
 
-            // Construct an array that is the size of the current number of lines in the richtextbox - Sara Walker
-            string[] ingredientArray = new string[rtxtIngredients.Lines.Length];
+            // Construct a string for the ingredients using ArrayBuilder and Join methods - Sara Walker
+            string formattedIngredients = "Ingredients:\n" + string.Join("\n", ArrayBuilder(rtxtIngredients)) + "\n";
 
-            // For loop that iterates through each line in the richtextbox - Sara Walker
-            for (int i = 0; i < rtxtIngredients.Lines.Length; i++)
-            {
-                // Get the first character of the current line iteration - Sara Walker
-                int currentLineStart = rtxtIngredients.GetFirstCharIndexFromLine(i);
-
-                // Set the cursor to the current line iteration - Sara Walker
-                rtxtIngredients.SelectionStart = currentLineStart;
-
-                // If the line does not have a bullet point, place a bullet point - Sara Walker
-                if (!rtxtIngredients.SelectionBullet)
-                {
-                    rtxtIngredients.SelectionBullet = true;
-                }
-
-                // Place a "~" in front of the current line iteration - Sara Walker
-                ingredientArray[i] = "~" + rtxtIngredients.Lines[i];
-            }
-
-            // Construct a string for the ingredients - Sara Walker
-            string formattedIngredients = "Ingredients:\n" + string.Join("\n", ingredientArray) + "\n";
-
-            // Construct an array that is the size of the current number of lines in the richtextbox - Sara Walker
-            string[] directionArray = new string[rtxtDirections.Lines.Length];
-
-            // For loop that iterates through each line in the richtextbox - Sara Walker
-            for (int i = 0; i < rtxtDirections.Lines.Length; i++)
-            {
-                // Get the first character of the current line iteration - Sara Walker
-                int currentLineStart = rtxtDirections.GetFirstCharIndexFromLine(i);
-
-                // Set the cursor to the current line iteration - Sara Walker
-                rtxtDirections.SelectionStart = currentLineStart;
-
-                // If the line does not have a bullet point, place a bullet point - Sara Walker
-                if (!rtxtDirections.SelectionBullet)
-                {
-                    rtxtDirections.SelectionBullet = true;
-                }
-
-                // Place a "~" in front of the current line iteration - Sara Walker
-                directionArray[i] = "~" + rtxtDirections.Lines[i];
-            }
-
-            // Construct a string for the directions - Sara Walker
-            string formattedDirections = "Directions:\n" + string.Join("\n", directionArray);
+            // Construct a string for the directions using ArrayBuilder and Join methods - Sara Walker
+            string formattedDirections = "Directions:\n" + string.Join("\n", ArrayBuilder(rtxtDirections));
 
             // Return all strings combined together with a newline to separate them - Sara Walker
             return $"{nameString}\n{descriptionString}\n{formattedIngredients}\n{formattedDirections}";
@@ -146,7 +130,7 @@ namespace RecipeManager
         private void frmRecipeManager_Load(object sender, EventArgs e)
         {
             // This is where we load any existing files on startup - Sara Walker
-            Load_Files();
+            LoadFiles();
         }
 
         // Call ClearContentBoxes when creating a new recipe - Sara Walker
@@ -187,7 +171,7 @@ namespace RecipeManager
                     if (result == DialogResult.Yes)
                     {
                         // Write to the file, the new formatted ingredient list - Sara Walker
-                        File.WriteAllText(RecipeFilePath, ContentToSave());
+                        File.WriteAllText(RecipeFilePath, BuildContentString());
                     }
                 }
                 else
@@ -196,7 +180,7 @@ namespace RecipeManager
                     lbRecipeList.Items.Add(txtRecipeName.Text);
 
                     // Write to the file, the new formatted ingredient list - Sara Walker
-                    File.WriteAllText(RecipeFilePath, ContentToSave());
+                    File.WriteAllText(RecipeFilePath, BuildContentString());
                 }
             }
             else MessageBox.Show(msg, caption);
