@@ -35,6 +35,7 @@
             this.tsmiCreateNew = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSave = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblName = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblIngredients = new System.Windows.Forms.Label();
@@ -44,12 +45,13 @@
             this.rtxtIngredients = new System.Windows.Forms.RichTextBox();
             this.rtxtDirections = new System.Windows.Forms.RichTextBox();
             this.btnExit = new System.Windows.Forms.Button();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblContributors = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbRecipeList
             // 
+            this.lbRecipeList.ForeColor = System.Drawing.SystemColors.WindowText;
             this.lbRecipeList.FormattingEnabled = true;
             this.lbRecipeList.Location = new System.Drawing.Point(9, 38);
             this.lbRecipeList.Name = "lbRecipeList";
@@ -102,6 +104,13 @@
             this.tsmiDelete.Size = new System.Drawing.Size(180, 22);
             this.tsmiDelete.Text = "Delete";
             this.tsmiDelete.Click += new System.EventHandler(this.tsmiDelete_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // lblName
             // 
@@ -184,11 +193,14 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // helpToolStripMenuItem
+            // lblContributors
             // 
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.helpToolStripMenuItem.Text = "Help";
+            this.lblContributors.AutoSize = true;
+            this.lblContributors.Location = new System.Drawing.Point(515, 9);
+            this.lblContributors.Name = "lblContributors";
+            this.lblContributors.Size = new System.Drawing.Size(151, 13);
+            this.lblContributors.TabIndex = 0;
+            this.lblContributors.Text = "Sara Walker, Aaron White";
             // 
             // frmRecipeManager
             // 
@@ -196,7 +208,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(680, 467);
+            this.ClientSize = new System.Drawing.Size(684, 471);
+            this.Controls.Add(this.lblContributors);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.rtxtDirections);
             this.Controls.Add(this.rtxtIngredients);
@@ -209,6 +222,7 @@
             this.Controls.Add(this.lbRecipeList);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(700, 510);
             this.Name = "frmRecipeManager";
@@ -240,6 +254,7 @@
         private System.Windows.Forms.RichTextBox rtxtDirections;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.Label lblContributors;
     }
 }
 
