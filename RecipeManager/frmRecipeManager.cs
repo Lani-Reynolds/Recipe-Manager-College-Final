@@ -32,8 +32,8 @@ namespace RecipeManager
         // Global CurrentRecipe string to be used when constructing the RecipeFilePath - Sara Walker
         public string CurrentRecipe = "";
 
-        public frmRecipeManager() 
-        { 
+        public frmRecipeManager()
+        {
             InitializeComponent();
 
             // Set the first line of both the ingredients and the directions to bulleted - Sara Walker
@@ -106,7 +106,24 @@ namespace RecipeManager
 
                 // Call GenerateRecipePath to have RecipeFilePath hold CurrentRecipe - Sara Walker
                 GenerateRecipePath();
+                // Check if the file exists - Sara Walker
+                if (File.Exists(RecipeFilePath))
+                {   // Strings to display in the message box - Sara Walker
+                    string msg2 = "Would you like to rewrite file";
+                    string caption2 = "File exists";
 
+                    // Yes or no buttons - Sara Walker
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+
+                    // Get result from the message box - Sara Walker
+                    DialogResult result = MessageBox.Show(msg2, caption2, buttons);
+
+                    // If the result equals yes, clear the contents, delete the file, and remove the recipe name from listbox - Sara Walker
+                    if (result == DialogResult.Yes)
+                    {
+
+                    }
+                }
                 // Add recipe name to the listbox - Sara Walker
                 lbRecipeList.Items.Add(txtRecipeName.Text);
 
@@ -141,7 +158,7 @@ namespace RecipeManager
             else MessageBox.Show(msg, caption);
 
 
-            
+
 
             /* Code Features */
 
