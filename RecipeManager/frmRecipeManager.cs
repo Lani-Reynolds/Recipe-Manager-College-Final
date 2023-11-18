@@ -73,6 +73,12 @@ namespace RecipeManager
         // Method to contruct the string of file contents - Sara Walker
         private string ContentToSave()
         {
+            // Construct a string for the name - Aaron White
+            string nameString = $"Name:\n{txtRecipeName.Text}\n";
+
+            // Construct a string for the description - Aaron White
+            string descriptionString = $"Description:\n{rtxtDescription.Text}\n";
+
             // Construct an array that is the size of the current number of lines in the richtextbox - Sara Walker
             string[] ingredientArray = new string[rtxtIngredients.Lines.Length];
 
