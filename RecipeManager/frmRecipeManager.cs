@@ -70,6 +70,37 @@ namespace RecipeManager
             rtxtDirections.Text = "";
         }
 
+        // Method to contruct the string of file contents - Sara Walker
+        private string ContentToSave()
+        {
+            // Construct an array that is the size of the current number of lines in the richtextbox - Sara Walker
+            string[] ingredientArray = new string[rtxtIngredients.Lines.Length];
+
+            // For loop that iterates through each line in the richtextbox - Sara Walker
+            for (int i = 0; i < rtxtIngredients.Lines.Length; i++)
+            {
+                // Get the first character of the current line iteration - Sara Walker
+                int currentLineStart = rtxtIngredients.GetFirstCharIndexFromLine(i);
+
+                // Set the cursor to the current line iteration - Sara Walker
+                rtxtIngredients.SelectionStart = currentLineStart;
+
+                // If the line does not have a bullet point, place a bullet point - Sara Walker
+                if (!rtxtIngredients.SelectionBullet)
+                {
+                    rtxtIngredients.SelectionBullet = true;
+                }
+
+                // Place a "~" in front of the current line iteration - Sara Walker
+                ingredientArray[i] = "~" + rtxtIngredients.Lines[i];
+            }
+
+            string formattedIngredients = string.Join("\n", ingredientArray);
+
+            // Return the formattedIngredients with the join method - Sara Walker
+            return formattedIngredients;
+        }
+
         private string IsPresent(TextBox textBox, string name)
         {
             return "";
@@ -108,52 +139,33 @@ namespace RecipeManager
                 GenerateRecipePath();
                 // Check if the file exists - Sara Walker
                 if (File.Exists(RecipeFilePath))
-                {   // Strings to display in the message box - Sara Walker
+                {
+                    // Strings to display in the message box - Aaron White
                     string msg2 = "Would you like to rewrite file";
                     string caption2 = "File exists";
 
-                    // Yes or no buttons - Sara Walker
+                    // Yes or no buttons - Aaron White
                     MessageBoxButtons buttons = MessageBoxButtons.YesNo;
 
-                    // Get result from the message box - Sara Walker
+                    // Get result from the message box - Aaron White
                     DialogResult result = MessageBox.Show(msg2, caption2, buttons);
 
-                    // If the result equals yes, clear the contents, delete the file, and remove the recipe name from listbox - Sara Walker
+                    // If the result equals yes - Aaron White
                     if (result == DialogResult.Yes)
                     {
-
+                        // Write to the file, the new formatted ingredient list - Sara Walker
+                        File.WriteAllText(RecipeFilePath, ContentToSave());
                     }
                 }
-                // Add recipe name to the listbox - Sara Walker
-                lbRecipeList.Items.Add(txtRecipeName.Text);
-
-                // Construct an array that is the size of the current number of lines in the richtextbox - Sara Walker
-                string[] ingredientArray = new string[rtxtIngredients.Lines.Length];
-
-                // For loop that iterates through each line in the richtextbox - Sara Walker
-                for (int i = 0; i < rtxtIngredients.Lines.Length; i++)
+                else
                 {
-                    // Get the first character of the current line iteration - Sara Walker
-                    int currentLineStart = rtxtIngredients.GetFirstCharIndexFromLine(i);
+                    // Add recipe name to the listbox - Sara Walker
+                    lbRecipeList.Items.Add(txtRecipeName.Text);
 
-                    // Set the cursor to the current line iteration - Sara Walker
-                    rtxtIngredients.SelectionStart = currentLineStart;
-
-                    // If the line does not have a bullet point, place a bullet point - Sara Walker
-                    if (!rtxtIngredients.SelectionBullet)
-                    {
-                        rtxtIngredients.SelectionBullet = true;
-                    }
-
-                    // Place a "~" in front of the current line iteration - Sara Walker
-                    ingredientArray[i] = "~" + rtxtIngredients.Lines[i];
+                    // Write to the file, the new formatted ingredient list - Sara Walker
+                    File.WriteAllText(RecipeFilePath, ContentToSave());
                 }
 
-                // Join the ingredient array with "\n" between each count - Sara Walker
-                string formattedIngredients = string.Join("\n", ingredientArray);
-
-                // Write to the file, the new formatted ingredient list - Sara Walker
-                File.WriteAllText(RecipeFilePath, formattedIngredients);
             }
             else MessageBox.Show(msg, caption);
 
