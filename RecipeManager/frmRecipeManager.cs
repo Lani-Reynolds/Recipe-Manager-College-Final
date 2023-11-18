@@ -101,11 +101,36 @@ namespace RecipeManager
                 ingredientArray[i] = "~" + rtxtIngredients.Lines[i];
             }
 
-            //  Construct a string with the join method - Sara Walker
-            string formattedIngredients = string.Join("\n", ingredientArray);
+            // Construct a string for the ingredients - Sara Walker
+            string formattedIngredients = "Ingredients:\n" + string.Join("\n", ingredientArray) + "\n";
 
-            // Return the formattedIngredients - Sara Walker
-            return formattedIngredients;
+            // Construct an array that is the size of the current number of lines in the richtextbox - Sara Walker
+            string[] directionArray = new string[rtxtDirections.Lines.Length];
+
+            // For loop that iterates through each line in the richtextbox - Sara Walker
+            for (int i = 0; i < rtxtDirections.Lines.Length; i++)
+            {
+                // Get the first character of the current line iteration - Sara Walker
+                int currentLineStart = rtxtDirections.GetFirstCharIndexFromLine(i);
+
+                // Set the cursor to the current line iteration - Sara Walker
+                rtxtDirections.SelectionStart = currentLineStart;
+
+                // If the line does not have a bullet point, place a bullet point - Sara Walker
+                if (!rtxtDirections.SelectionBullet)
+                {
+                    rtxtDirections.SelectionBullet = true;
+                }
+
+                // Place a "~" in front of the current line iteration - Sara Walker
+                directionArray[i] = "~" + rtxtDirections.Lines[i];
+            }
+
+            // Construct a string for the directions - Sara Walker
+            string formattedDirections = "Directions:\n" + string.Join("\n", directionArray);
+
+            // Return all strings combined together with a newline to separate them - Sara Walker
+            return $"{nameString}\n{descriptionString}\n{formattedIngredients}\n{formattedDirections}";
         }
 
         private string IsPresent(TextBox textBox, string name)
