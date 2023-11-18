@@ -15,11 +15,11 @@
       - [x] Clear Recipe editing Contents ~ `private void ClearContentBoxes()`
     - [x] Help ~ Menu Option/frmHelp
       - [x] Controls ~ Button
-        - [ ] Display Conrols ~ GroupBox
+          - [ ] Display Conrols ~ GroupBox
        - [x] Ingredients Format ~ Button
-        - [ ] Display Ingredients Format ~ GroupBox
+          - [ ] Display Ingredients Format ~ GroupBox
        - [x] Directions Format ~ Button
-        - [ ] Display Directions Format ~ GroupBox
+          - [ ] Display Directions Format ~ GroupBox
  - [x] Recipe List ~ ListBox
     - [ ] Load Recipe Contents in Textboxes ~ `private void lbRecipeList_SelectedValueChanged(object sender, EventArgs e)`
     - [ ] Double Click Recipe to View ~ Formatted MessageBox

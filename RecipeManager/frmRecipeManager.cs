@@ -95,9 +95,10 @@ namespace RecipeManager
                 ingredientArray[i] = "~" + rtxtIngredients.Lines[i];
             }
 
+            //  Construct a string with the join method - Sara Walker
             string formattedIngredients = string.Join("\n", ingredientArray);
 
-            // Return the formattedIngredients with the join method - Sara Walker
+            // Return the formattedIngredients - Sara Walker
             return formattedIngredients;
         }
 
@@ -137,11 +138,12 @@ namespace RecipeManager
 
                 // Call GenerateRecipePath to have RecipeFilePath hold CurrentRecipe - Sara Walker
                 GenerateRecipePath();
-                // Check if the file exists - Sara Walker
+
+                // Check if the file exists - Aaron White
                 if (File.Exists(RecipeFilePath))
                 {
                     // Strings to display in the message box - Aaron White
-                    string msg2 = "Would you like to rewrite file";
+                    string msg2 = "Would you like to rewrite file?";
                     string caption2 = "File exists";
 
                     // Yes or no buttons - Aaron White
@@ -165,7 +167,6 @@ namespace RecipeManager
                     // Write to the file, the new formatted ingredient list - Sara Walker
                     File.WriteAllText(RecipeFilePath, ContentToSave());
                 }
-
             }
             else MessageBox.Show(msg, caption);
 
@@ -174,10 +175,10 @@ namespace RecipeManager
 
             /* Code Features */
 
-            //string example = $"Name:{txtRecipeName.Text}\n" +
-            //                 $"Description:{rtxtDescription.Text}\n" +
-            //                 $"Ingredients:1/4_tsp-Black_Pepper|1_tbsp-Olive_Oil" + //This is an example of how ingredients will be displayed in the file
-            //                 $"Directions: {rtxtDirections.Text}";
+            //string example = $"Name:\n{txtRecipeName.Text}\n" +
+            //                 $"Description:\n{rtxtDescription.Text}\n" +
+            //                 $"Ingredients:\n1/4_tsp-Black_Pepper|1_tbsp-Olive_Oil" + //This is an example of how ingredients will be displayed in the file
+            //                 $"Directions:\n{rtxtDirections.Text}";
 
             // Construct a string to be saved to the file
             // Save contents of text boxes to recipe file
