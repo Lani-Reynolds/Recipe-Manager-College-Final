@@ -282,12 +282,10 @@ namespace RecipeManager
 
         private void txt_Leave(object sender, EventArgs e)
         {
-
-
             int.TryParse(txtPrepTime.Text, out int prepTime);
             int.TryParse(txtCookTime.Text, out int cookTime);
 
-            txtTotalTime.Text = (prepTime + cookTime).ToString();
+            int totalTimeInMinutes = prepTime + cookTime;
 
         }
 
