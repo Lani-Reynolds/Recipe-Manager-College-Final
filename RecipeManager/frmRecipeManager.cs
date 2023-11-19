@@ -134,7 +134,10 @@ namespace RecipeManager
         }
 
         // Call ClearContentBoxes when creating a new recipe - Sara Walker
-        private void tsmiCreateNew_Click(object sender, EventArgs e) => ClearContentBoxes();
+        private void tsmiCreateNew_Click(object sender, EventArgs e)
+        {
+            ClearContentBoxes();
+        }
 
         private void tsmiSave_Click(object sender, EventArgs e)
         {
@@ -184,19 +187,6 @@ namespace RecipeManager
                 }
             }
             else MessageBox.Show(msg, caption);
-
-
-
-
-            /* Code Features */
-
-            //string example = $"Name:\n{txtRecipeName.Text}\n" +
-            //                 $"Description:\n{rtxtDescription.Text}\n" +
-            //                 $"Ingredients:\n1/4_tsp-Black_Pepper|1_tbsp-Olive_Oil" + //This is an example of how ingredients will be displayed in the file
-            //                 $"Directions:\n{rtxtDirections.Text}";
-
-            // Construct a string to be saved to the file
-            // Save contents of text boxes to recipe file
         }
 
         private void tsmiDelete_Click(object sender, EventArgs e)
