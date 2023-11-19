@@ -19,8 +19,8 @@ namespace RecipeManager
         /* 
            Idea - Sara Walker
            Design - Sara Walker 
-           Implementation - Sara Walker, Aaron White
-           Testing - Sara Walker, Aaron White 
+           Implementation - Sara Walker, Aaron White, Dominiq Holder
+           Testing - Sara Walker, Aaron White, Dominiq Holder
         */
 
         // Global string of where the user's files are kept, this is usually in the %APPDATA% (C:/Users/<user>/AppData/Roaming) - Sara Walker
@@ -117,15 +117,39 @@ namespace RecipeManager
             return $"{nameString}\n{descriptionString}\n{formattedIngredients}\n{formattedDirections}";
         }
 
-        private string IsPresent(TextBox textBox, string name)
+        private string IsPresent(Control control, string name)
         {
-            return "";
+            // Check if control is empty - Dominiq Holder/Sara Walker 
+            string message = "";
+            if (control.Text == "")
+            {
+                // Show a pop-up message indicating that the control is empty - Dominiq Holder
+                message += name + " Is a Required Field\n";
+          
+            }
+
+            return message;
         }
+
 
         private bool IsValidData()
         {
-            return true;
+            bool success = true;
+            string errorMessage = "";
+            errorMessage += IsPresent(txtRecipeName, txtRecipeName.Tag.ToString());
+            errorMessage += IsPresent(rtxtDescription, rtxtDescription.Tag.ToString());
+            errorMessage += IsPresent(rtxtIngredients, rtxtIngredients.Tag.ToString());
+            errorMessage += IsPresent(rtxtDirections, rtxtDirections.Tag.ToString());
+            if (errorMessage != "")
+            {
+                success = false;
+                MessageBox.Show(errorMessage, "Entry Error");
+            }
+            // Add additional checks for other controls if needed - Dominiq Holder
+
+            return success; // If all checks pass, return true - Dominiq Holder
         }
+
 
         private void frmRecipeManager_Load(object sender, EventArgs e)
         {
@@ -136,7 +160,30 @@ namespace RecipeManager
         // Call ClearContentBoxes when creating a new recipe - Sara Walker
         private void tsmiCreateNew_Click(object sender, EventArgs e)
         {
-            ClearContentBoxes();
+            
+          
+                // Strings to display in the message box - Dominiq Holder
+                string msg2 = "Are You Sure You Would Like To Create A New Recipe?";
+                string caption = "Create New Recipe";
+
+                // Yes or no buttons - Dominiq Holder
+                MessageBoxButtons clearButtons = MessageBoxButtons.YesNo;
+
+                // Get result from the message box - Dominiq Holder
+                DialogResult clearResult = MessageBox.Show(msg2, caption, clearButtons);
+
+                // Handle the result accordingly - Dominiq Holder
+                if (clearResult == DialogResult.Yes)
+                {
+                    // Clear content boxes - Dominiq Holder
+                    ClearContentBoxes();
+                }
+                else if (clearResult == DialogResult.Cancel)
+                {
+                    // Cancel the save operation - Dominiq Holder
+                    return;
+                }
+            
         }
 
         private void tsmiSave_Click(object sender, EventArgs e)
@@ -145,11 +192,10 @@ namespace RecipeManager
             CurrentRecipe = "";
 
             // Strings to display in the message box - Sara Walker
-            string msg = "Please enter a file name";
-            string caption = "Missing File Name";
+            
 
             // If there is text in the text box - Sara Walker
-            if (txtRecipeName.Text != "")
+            if (IsValidData())
             {
                 // Set CurrentRecipe variable to text in recipe name textbox - Sara Walker
                 CurrentRecipe = txtRecipeName.Text;
@@ -186,7 +232,7 @@ namespace RecipeManager
                     File.WriteAllText(RecipeFilePath, BuildContentString());
                 }
             }
-            else MessageBox.Show(msg, caption);
+           
         }
 
         private void tsmiDelete_Click(object sender, EventArgs e)

@@ -154,6 +154,7 @@
             this.txtRecipeName.Name = "txtRecipeName";
             this.txtRecipeName.Size = new System.Drawing.Size(409, 20);
             this.txtRecipeName.TabIndex = 1;
+            this.txtRecipeName.Tag = "Name";
             // 
             // rtxtDescription
             // 
@@ -161,6 +162,7 @@
             this.rtxtDescription.Name = "rtxtDescription";
             this.rtxtDescription.Size = new System.Drawing.Size(409, 112);
             this.rtxtDescription.TabIndex = 2;
+            this.rtxtDescription.Tag = "Description";
             this.rtxtDescription.Text = "";
             // 
             // rtxtIngredients
@@ -170,6 +172,7 @@
             this.rtxtIngredients.Name = "rtxtIngredients";
             this.rtxtIngredients.Size = new System.Drawing.Size(409, 112);
             this.rtxtIngredients.TabIndex = 3;
+            this.rtxtIngredients.Tag = "Ingredients";
             this.rtxtIngredients.Text = "";
             this.rtxtIngredients.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rtxt_KeyDown);
             // 
@@ -179,6 +182,7 @@
             this.rtxtDirections.Name = "rtxtDirections";
             this.rtxtDirections.Size = new System.Drawing.Size(409, 112);
             this.rtxtDirections.TabIndex = 4;
+            this.rtxtDirections.Tag = "Directions";
             this.rtxtDirections.Text = "";
             this.rtxtDirections.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rtxt_KeyDown);
             // 
@@ -196,11 +200,11 @@
             // lblContributors
             // 
             this.lblContributors.AutoSize = true;
-            this.lblContributors.Location = new System.Drawing.Point(515, 9);
+            this.lblContributors.Location = new System.Drawing.Point(425, 9);
             this.lblContributors.Name = "lblContributors";
-            this.lblContributors.Size = new System.Drawing.Size(151, 13);
+            this.lblContributors.Size = new System.Drawing.Size(247, 13);
             this.lblContributors.TabIndex = 0;
-            this.lblContributors.Text = "Sara Walker, Aaron White";
+            this.lblContributors.Text = "Sara Walker, Aaron White, Dominiq Holder";
             // 
             // frmRecipeManager
             // 
