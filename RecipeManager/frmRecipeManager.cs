@@ -286,6 +286,12 @@ namespace RecipeManager
             // Set CurrentRecipe variable to the selected item in the listbox as a string - Sara Walker
             CurrentRecipe = lbRecipeList.SelectedItem.ToString();
 
+            GenerateRecipePath();
+
+            foreach (string line in File.ReadAllLines(RecipeFilePath))
+            {
+                Console.WriteLine(line);
+            }
 
             /* Code Features */
 
