@@ -49,10 +49,26 @@
             this.lblPrepTime = new System.Windows.Forms.Label();
             this.lblCookTime = new System.Windows.Forms.Label();
             this.lblTotalTime = new System.Windows.Forms.Label();
-            this.txtPrepTime = new System.Windows.Forms.TextBox();
             this.txtTotalTime = new System.Windows.Forms.TextBox();
-            this.txtCookTime = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
             this.msOptions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
             this.SuspendLayout();
             // 
             // lbRecipeList
@@ -215,7 +231,7 @@
             // lblPrepTime
             // 
             this.lblPrepTime.AutoSize = true;
-            this.lblPrepTime.Location = new System.Drawing.Point(257, 68);
+            this.lblPrepTime.Location = new System.Drawing.Point(254, 68);
             this.lblPrepTime.Name = "lblPrepTime";
             this.lblPrepTime.Size = new System.Drawing.Size(67, 13);
             this.lblPrepTime.TabIndex = 0;
@@ -224,7 +240,7 @@
             // lblCookTime
             // 
             this.lblCookTime.AutoSize = true;
-            this.lblCookTime.Location = new System.Drawing.Point(408, 68);
+            this.lblCookTime.Location = new System.Drawing.Point(380, 68);
             this.lblCookTime.Name = "lblCookTime";
             this.lblCookTime.Size = new System.Drawing.Size(67, 13);
             this.lblCookTime.TabIndex = 0;
@@ -233,38 +249,129 @@
             // lblTotalTime
             // 
             this.lblTotalTime.AutoSize = true;
-            this.lblTotalTime.Location = new System.Drawing.Point(563, 68);
+            this.lblTotalTime.Location = new System.Drawing.Point(569, 68);
             this.lblTotalTime.Name = "lblTotalTime";
             this.lblTotalTime.Size = new System.Drawing.Size(73, 13);
             this.lblTotalTime.TabIndex = 0;
             this.lblTotalTime.Text = "Total Time:";
             // 
-            // txtPrepTime
-            // 
-            this.txtPrepTime.Location = new System.Drawing.Point(257, 84);
-            this.txtPrepTime.Name = "txtPrepTime";
-            this.txtPrepTime.Size = new System.Drawing.Size(100, 20);
-            this.txtPrepTime.TabIndex = 2;
-            this.txtPrepTime.Tag = "Prep Time";
-            this.txtPrepTime.Leave += new System.EventHandler(this.txt_Leave);
-            // 
             // txtTotalTime
             // 
-            this.txtTotalTime.Location = new System.Drawing.Point(566, 84);
+            this.txtTotalTime.Location = new System.Drawing.Point(572, 83);
             this.txtTotalTime.Name = "txtTotalTime";
             this.txtTotalTime.ReadOnly = true;
             this.txtTotalTime.Size = new System.Drawing.Size(100, 20);
             this.txtTotalTime.TabIndex = 4;
             this.txtTotalTime.TabStop = false;
             // 
-            // txtCookTime
+            // label5
             // 
-            this.txtCookTime.Location = new System.Drawing.Point(411, 84);
-            this.txtCookTime.Name = "txtCookTime";
-            this.txtCookTime.Size = new System.Drawing.Size(100, 20);
-            this.txtCookTime.TabIndex = 3;
-            this.txtCookTime.Tag = "Cook Time";
-            this.txtCookTime.Leave += new System.EventHandler(this.txt_Leave);
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.SystemColors.Control;
+            this.label5.Location = new System.Drawing.Point(347, 102);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(13, 13);
+            this.label5.TabIndex = 33;
+            this.label5.Text = "M";
+            // 
+            // numericUpDown5
+            // 
+            this.numericUpDown5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown5.Location = new System.Drawing.Point(341, 83);
+            this.numericUpDown5.Name = "numericUpDown5";
+            this.numericUpDown5.Size = new System.Drawing.Size(36, 16);
+            this.numericUpDown5.TabIndex = 32;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.SystemColors.Control;
+            this.label4.Location = new System.Drawing.Point(304, 102);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(13, 13);
+            this.label4.TabIndex = 31;
+            this.label4.Text = "H";
+            // 
+            // numericUpDown4
+            // 
+            this.numericUpDown4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown4.Location = new System.Drawing.Point(299, 83);
+            this.numericUpDown4.Name = "numericUpDown4";
+            this.numericUpDown4.Size = new System.Drawing.Size(36, 16);
+            this.numericUpDown4.TabIndex = 30;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(263, 102);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(13, 13);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "D";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown1.Location = new System.Drawing.Point(257, 83);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(36, 16);
+            this.numericUpDown1.TabIndex = 28;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(473, 102);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(13, 13);
+            this.label2.TabIndex = 39;
+            this.label2.Text = "M";
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown2.Location = new System.Drawing.Point(467, 83);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(36, 16);
+            this.numericUpDown2.TabIndex = 38;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.SystemColors.Control;
+            this.label3.Location = new System.Drawing.Point(430, 102);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(13, 13);
+            this.label3.TabIndex = 37;
+            this.label3.Text = "H";
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown3.Location = new System.Drawing.Point(425, 83);
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(36, 16);
+            this.numericUpDown3.TabIndex = 36;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.SystemColors.Control;
+            this.label6.Location = new System.Drawing.Point(389, 102);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(13, 13);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "D";
+            // 
+            // numericUpDown6
+            // 
+            this.numericUpDown6.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown6.Location = new System.Drawing.Point(383, 83);
+            this.numericUpDown6.Name = "numericUpDown6";
+            this.numericUpDown6.Size = new System.Drawing.Size(36, 16);
+            this.numericUpDown6.TabIndex = 34;
             // 
             // frmRecipeManager
             // 
@@ -273,9 +380,19 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(684, 486);
-            this.Controls.Add(this.txtCookTime);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.numericUpDown2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.numericUpDown3);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.numericUpDown6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.numericUpDown5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.numericUpDown4);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.txtTotalTime);
-            this.Controls.Add(this.txtPrepTime);
             this.Controls.Add(this.lblTotalTime);
             this.Controls.Add(this.lblCookTime);
             this.Controls.Add(this.lblPrepTime);
@@ -301,6 +418,12 @@
             this.Load += new System.EventHandler(this.frmRecipeManager_Load);
             this.msOptions.ResumeLayout(false);
             this.msOptions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -328,9 +451,19 @@
         private System.Windows.Forms.Label lblPrepTime;
         private System.Windows.Forms.Label lblCookTime;
         private System.Windows.Forms.Label lblTotalTime;
-        private System.Windows.Forms.TextBox txtPrepTime;
         private System.Windows.Forms.TextBox txtTotalTime;
-        private System.Windows.Forms.TextBox txtCookTime;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown numericUpDown5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown numericUpDown6;
     }
 }
 

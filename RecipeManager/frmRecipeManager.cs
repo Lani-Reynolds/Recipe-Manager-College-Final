@@ -282,10 +282,6 @@ namespace RecipeManager
 
         private void txt_Leave(object sender, EventArgs e)
         {
-            int.TryParse(txtPrepTime.Text, out int prepTime);
-            int.TryParse(txtCookTime.Text, out int cookTime);
-
-            int totalTimeInMinutes = prepTime + cookTime;
 
         }
 
@@ -329,5 +325,10 @@ namespace RecipeManager
 
         // Close form when pressing escape - Sara Walker
         private void btnExit_Click(object sender, EventArgs e) => Close();
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            numericUpDown1.Text = numericUpDown1.Value.ToString() + "Days";
+        }
     }
 }
