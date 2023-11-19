@@ -23,7 +23,7 @@ namespace RecipeManager
            Testing - Sara Walker, Aaron White, Dominiq Holder
         */
 
-        // Global string of where the user's files are kept, this is usually in the %APPDATA% (C:/Users/<user>/AppData/Roaming) - Sara Walker
+        // Global string of where the user's files are kept, this is usually in the %APPDATA% (C:/Users/<user>/AppData/Roaming) - Sara Walker  (EXTRA)
         public string UserRecipesPath = Application.UserAppDataPath;
 
         // Global RecipeFilePath string to be used when needed to access the current recipe file - Sara Walker
@@ -119,7 +119,7 @@ namespace RecipeManager
 
         private string IsPresent(Control control, string name)
         {
-            // Check if control is empty - Dominiq Holder/Sara Walker 
+            // Check if control is empty - Dominiq Holder
             string message = "";
             if (control.Text == "")
             {
@@ -299,7 +299,7 @@ namespace RecipeManager
 
         }
 
-        // This event handler is attached to the ingredients and direction richtextboxes - Sara Walker
+        // This event handler is attached to the ingredients and direction richtextboxes - Sara Walker (EXTRA)
         private void rtxt_KeyDown(object sender, KeyEventArgs e)
         {
             // Set the sender to a RichTextBox - Sara Walker
@@ -318,7 +318,7 @@ namespace RecipeManager
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Show frmHelp when clicked apply frmRecipeManager to the parameter - Sara Walker
+            // Show frmHelp when clicked apply frmRecipeManager to the parameter - Sara Walker (EXTRA)
             frmHelp frmHelp = new frmHelp(this);
             frmHelp.Show();
         }
