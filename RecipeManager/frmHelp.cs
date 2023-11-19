@@ -22,5 +22,28 @@ namespace RecipeManager
             Location = new Point(newX, Owner.Location.Y);
         }
 
+        // Attached to each button
+        private void btn_Click(object sender, EventArgs e)
+        {
+            // Get whatever button was pressed - Sara Walker
+            Button button = (Button)sender;
+
+            // Set the text of the group box to the text of the button pressed - Sara Walker
+            gbxHelp.Text = button.Text;
+
+            // Check which button has been pressed - Sara Walker
+            if (button == btnControls)
+            {
+                Console.WriteLine("Write controls here");
+            }
+            else if (button == btnIngredientsFormat)
+            {
+                Console.WriteLine("Write ingredients format here");
+            }
+            else if (button == btnDirectionsFormat)
+            {
+                Console.WriteLine("Write directions format here");
+            }
+        }
     }
 }

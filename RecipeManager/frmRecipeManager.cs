@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using System.Text.RegularExpressions;
+using System.Runtime.Remoting.Messaging;
 
 namespace RecipeManager
 {
@@ -70,7 +71,6 @@ namespace RecipeManager
             rtxtDirections.Text = "";
         }
 
-        //
         private string[] ArrayBuilder(RichTextBox richTextBox)
         {
             // Construct an array that is the size of the current number of lines in the richtextbox - Sara Walker
@@ -124,13 +124,12 @@ namespace RecipeManager
             if (control.Text == "")
             {
                 // Show a pop-up message indicating that the control is empty - Dominiq Holder
-                message += name + " Is a Required Field\n";
+                message += name + " is a required field.\n";
           
             }
 
             return message;
         }
-
 
         private bool IsValidData()
         {
@@ -150,7 +149,6 @@ namespace RecipeManager
             return success; // If all checks pass, return true - Dominiq Holder
         }
 
-
         private void frmRecipeManager_Load(object sender, EventArgs e)
         {
             // This is where we load any existing files on startup - Sara Walker
@@ -163,7 +161,7 @@ namespace RecipeManager
             
           
                 // Strings to display in the message box - Dominiq Holder
-                string msg2 = "Are You Sure You Would Like To Create A New Recipe?";
+                string msg2 = "Are you sure you would like to create a new recipe?";
                 string caption = "Create New Recipe";
 
                 // Yes or no buttons - Dominiq Holder
@@ -275,6 +273,24 @@ namespace RecipeManager
             }
         }
 
+        private void tsmiHelp_Click(object sender, EventArgs e)
+        {
+            // Show frmHelp when clicked apply frmRecipeManager to the parameter - Sara Walker (EXTRA)
+            frmHelp frmHelp = new frmHelp(this);
+            frmHelp.Show();
+        }
+
+        private void txt_Leave(object sender, EventArgs e)
+        {
+
+
+            int.TryParse(txtPrepTime.Text, out int prepTime);
+            int.TryParse(txtCookTime.Text, out int cookTime);
+
+            txtTotalTime.Text = (prepTime + cookTime).ToString();
+
+        }
+
         private void lbRecipeList_SelectedValueChanged(object sender, EventArgs e)
         {
             // Gaurd clause for if the selected item in the list box is null, do nothing - Sara Walker
@@ -315,12 +331,5 @@ namespace RecipeManager
 
         // Close form when pressing escape - Sara Walker
         private void btnExit_Click(object sender, EventArgs e) => Close();
-
-        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Show frmHelp when clicked apply frmRecipeManager to the parameter - Sara Walker (EXTRA)
-            frmHelp frmHelp = new frmHelp(this);
-            frmHelp.Show();
-        }
     }
 }

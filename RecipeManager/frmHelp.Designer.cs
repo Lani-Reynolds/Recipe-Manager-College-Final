@@ -43,6 +43,7 @@
             this.btnControls.TabIndex = 1;
             this.btnControls.Text = "Controls";
             this.btnControls.UseVisualStyleBackColor = true;
+            this.btnControls.Click += new System.EventHandler(this.btn_Click);
             // 
             // btnIngredientsFormat
             // 
@@ -52,6 +53,7 @@
             this.btnIngredientsFormat.TabIndex = 2;
             this.btnIngredientsFormat.Text = "Ingredients Format";
             this.btnIngredientsFormat.UseVisualStyleBackColor = true;
+            this.btnIngredientsFormat.Click += new System.EventHandler(this.btn_Click);
             // 
             // btnDirectionsFormat
             // 
@@ -61,12 +63,13 @@
             this.btnDirectionsFormat.TabIndex = 3;
             this.btnDirectionsFormat.Text = "Directions Format";
             this.btnDirectionsFormat.UseVisualStyleBackColor = true;
+            this.btnDirectionsFormat.Click += new System.EventHandler(this.btn_Click);
             // 
             // gbxHelp
             // 
             this.gbxHelp.Location = new System.Drawing.Point(218, 13);
             this.gbxHelp.Name = "gbxHelp";
-            this.gbxHelp.Size = new System.Drawing.Size(312, 446);
+            this.gbxHelp.Size = new System.Drawing.Size(312, 461);
             this.gbxHelp.TabIndex = 4;
             this.gbxHelp.TabStop = false;
             // 
@@ -74,7 +77,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(542, 471);
+            this.ClientSize = new System.Drawing.Size(542, 486);
             this.Controls.Add(this.gbxHelp);
             this.Controls.Add(this.btnDirectionsFormat);
             this.Controls.Add(this.btnIngredientsFormat);
