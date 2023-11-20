@@ -305,37 +305,35 @@ namespace RecipeManager
             rtxtDescription.Text = lines[4];
 
             // Concatenate all lines from line 7 to the end of the document into a string array
-            string[] recipeIngredientsDirections = new string[lines.Skip(7).Count()];
+            List<string> recipeIngredientsDirections = new List<string>();
             foreach (string line in lines.Skip(7))
             {
                 if (line != "")
                 {
-                    Console.WriteLine(line);
+                    recipeIngredientsDirections.Add(line);
                 }
             }
-            //string ingredientsDirectionsTwo = string.Join(",", recipeIngredientsDirections);
-            //string[] ingredientsDirectionsArray = ingredientsDirectionsTwo.Split(':');
+            string ingredientsDirectionsTwo = string.Join("", recipeIngredientsDirections);
+            string[] ingredientsDirectionsArray = ingredientsDirectionsTwo.Split(':');
+            string ingredientsString = ingredientsDirectionsArray[0].Remove(ingredientsDirectionsArray[0].Length - 10, 10);
+            string directionsString = ingredientsDirectionsArray[1];
+            string[] ingredientArray = ingredientsString.Split('~');
+            string[] directionsArray = directionsString.Split('~');
 
-            //string ingredientsString = ingredientsDirectionsArray[0].Remove(ingredientsDirectionsArray[0].Length - 10, 10);
-            //string directionsString = ingredientsDirectionsArray[1];
-            //string[] ingredientArray = ingredientsString.Split('~');
-            //Console.WriteLine(ingredientsString);
-            //string[] directionsArray = directionsString.Split('~');
-            //Console.WriteLine(ingredientArray);
-            //foreach (string element in ingredientArray)
-            //{
-            //    if (element != "")
-            //    {
-                    //Console.WriteLine(element.Replace("\n", ""));
-            //    }
-            //}
-            //foreach (string element in directionsArray)
-            //{
-                //Console.WriteLine(element.Replace("\n\n", ""));
-            //}
-            /* Code Features */
-
-            // Load respective recipe file contents into text boxes
+            foreach (string element in ingredientArray)
+            {
+                if (element != "")
+                {
+                    rtxtIngredients.Text += element + "\n";
+                }
+            }
+            foreach (string element in directionsArray)
+            {
+                if (element != "")
+                {
+                    rtxtDirections.Text += element + "\n";
+                }
+            }
         }
         // This event handler is attached to the ingredients and direction richtextboxes - Sara Walker (EXTRA)
         private void rtxt_KeyDown(object sender, KeyEventArgs e)
