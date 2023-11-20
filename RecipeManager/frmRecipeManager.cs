@@ -311,14 +311,19 @@ namespace RecipeManager
 
             string ingredientsString = ingredientsDirectionsArray[0].Remove(ingredientsDirectionsArray[0].Length - 10, 10);
             string directionsString = ingredientsDirectionsArray[1];
-
+            string[] ingredientArray = ingredientsString.Split('~');
+            string[] directionsArray = directionsString.Split('~');
             Console.WriteLine(ingredientsString);
             Console.WriteLine(directionsString);
 
-            //foreach (string element in ingredientsDirectionsArray)
-            //{
-            //    Console.WriteLine(element);
-            //}
+            foreach (string element in ingredientArray)
+            {
+                Console.WriteLine(element);
+            }
+            foreach (string element in directionsArray)
+            {
+                Console.WriteLine(element);
+            }
             /* Code Features */
 
             // Load respective recipe file contents into text boxes
@@ -336,7 +341,6 @@ namespace RecipeManager
                 richTextBox.SelectionBullet = true;
             }
         }
-
         // Close form when pressing escape - Sara Walker
         private void btnExit_Click(object sender, EventArgs e) => Close();
 
