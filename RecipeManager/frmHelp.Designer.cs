@@ -33,6 +33,8 @@
             this.btnIngredientsFormat = new System.Windows.Forms.Button();
             this.btnDirectionsFormat = new System.Windows.Forms.Button();
             this.gbxHelp = new System.Windows.Forms.GroupBox();
+            this.rtxtHelp = new System.Windows.Forms.RichTextBox();
+            this.gbxHelp.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnControls
@@ -67,11 +69,21 @@
             // 
             // gbxHelp
             // 
+            this.gbxHelp.Controls.Add(this.rtxtHelp);
             this.gbxHelp.Location = new System.Drawing.Point(218, 13);
             this.gbxHelp.Name = "gbxHelp";
             this.gbxHelp.Size = new System.Drawing.Size(312, 461);
             this.gbxHelp.TabIndex = 4;
             this.gbxHelp.TabStop = false;
+            // 
+            // rtxtHelp
+            // 
+            this.rtxtHelp.Location = new System.Drawing.Point(-1, 19);
+            this.rtxtHelp.Name = "rtxtHelp";
+            this.rtxtHelp.Size = new System.Drawing.Size(313, 436);
+            this.rtxtHelp.TabIndex = 5;
+            this.rtxtHelp.Text = "";
+            this.rtxtHelp.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // frmHelp
             // 
@@ -88,6 +100,8 @@
             this.Name = "frmHelp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Help";
+            this.Load += new System.EventHandler(this.frmHelp_Load);
+            this.gbxHelp.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -97,5 +111,6 @@
         private System.Windows.Forms.Button btnIngredientsFormat;
         private System.Windows.Forms.Button btnDirectionsFormat;
         private System.Windows.Forms.GroupBox gbxHelp;
+        private System.Windows.Forms.RichTextBox rtxtHelp;
     }
 }
