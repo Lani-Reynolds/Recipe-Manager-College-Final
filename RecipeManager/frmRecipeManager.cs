@@ -307,8 +307,18 @@ namespace RecipeManager
             // Concatenate all lines from line 7 to the end of the document into a string array
             string[] recipeIngredientsDirections = lines.Skip(7).ToArray();
             string ingredientsDirectionsTwo = string.Join("", recipeIngredientsDirections);
-            Console.WriteLine(ingredientsDirectionsTwo);
-            ingredientsDirectionsTwo.Split(':');
+            string[] ingredientsDirectionsArray = ingredientsDirectionsTwo.Split(':');
+
+            string ingredientsString = ingredientsDirectionsArray[0].Remove(ingredientsDirectionsArray[0].Length - 10, 10);
+            string directionsString = ingredientsDirectionsArray[1];
+
+            Console.WriteLine(ingredientsString);
+            Console.WriteLine(directionsString);
+
+            //foreach (string element in ingredientsDirectionsArray)
+            //{
+            //    Console.WriteLine(element);
+            //}
             /* Code Features */
 
             // Load respective recipe file contents into text boxes
