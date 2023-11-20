@@ -305,25 +305,34 @@ namespace RecipeManager
             rtxtDescription.Text = lines[4];
 
             // Concatenate all lines from line 7 to the end of the document into a string array
-            string[] recipeIngredientsDirections = lines.Skip(7).ToArray();
-            string ingredientsDirectionsTwo = string.Join("", recipeIngredientsDirections);
-            string[] ingredientsDirectionsArray = ingredientsDirectionsTwo.Split(':');
-
-            string ingredientsString = ingredientsDirectionsArray[0].Remove(ingredientsDirectionsArray[0].Length - 10, 10);
-            string directionsString = ingredientsDirectionsArray[1];
-            string[] ingredientArray = ingredientsString.Split('~');
-            string[] directionsArray = directionsString.Split('~');
-            Console.WriteLine(ingredientsString);
-            Console.WriteLine(directionsString);
-
-            foreach (string element in ingredientArray)
+            string[] recipeIngredientsDirections = new string[lines.Skip(7).Count()];
+            foreach (string line in lines.Skip(7))
             {
-                Console.WriteLine(element);
+                if (line != "")
+                {
+                    Console.WriteLine(line);
+                }
             }
-            foreach (string element in directionsArray)
-            {
-                Console.WriteLine(element);
-            }
+            //string ingredientsDirectionsTwo = string.Join(",", recipeIngredientsDirections);
+            //string[] ingredientsDirectionsArray = ingredientsDirectionsTwo.Split(':');
+
+            //string ingredientsString = ingredientsDirectionsArray[0].Remove(ingredientsDirectionsArray[0].Length - 10, 10);
+            //string directionsString = ingredientsDirectionsArray[1];
+            //string[] ingredientArray = ingredientsString.Split('~');
+            //Console.WriteLine(ingredientsString);
+            //string[] directionsArray = directionsString.Split('~');
+            //Console.WriteLine(ingredientArray);
+            //foreach (string element in ingredientArray)
+            //{
+            //    if (element != "")
+            //    {
+                    //Console.WriteLine(element.Replace("\n", ""));
+            //    }
+            //}
+            //foreach (string element in directionsArray)
+            //{
+                //Console.WriteLine(element.Replace("\n\n", ""));
+            //}
             /* Code Features */
 
             // Load respective recipe file contents into text boxes
