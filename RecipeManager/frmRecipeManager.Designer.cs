@@ -240,7 +240,7 @@
             // lblCookTime
             // 
             this.lblCookTime.AutoSize = true;
-            this.lblCookTime.Location = new System.Drawing.Point(380, 68);
+            this.lblCookTime.Location = new System.Drawing.Point(412, 68);
             this.lblCookTime.Name = "lblCookTime";
             this.lblCookTime.Size = new System.Drawing.Size(67, 13);
             this.lblCookTime.TabIndex = 0;
@@ -323,7 +323,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(473, 102);
+            this.label2.Location = new System.Drawing.Point(505, 102);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(13, 13);
             this.label2.TabIndex = 39;
@@ -332,7 +332,7 @@
             // numericUpDown2
             // 
             this.numericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown2.Location = new System.Drawing.Point(467, 83);
+            this.numericUpDown2.Location = new System.Drawing.Point(499, 83);
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(36, 16);
             this.numericUpDown2.TabIndex = 38;
@@ -341,7 +341,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(430, 102);
+            this.label3.Location = new System.Drawing.Point(462, 102);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(13, 13);
             this.label3.TabIndex = 37;
@@ -350,7 +350,7 @@
             // numericUpDown3
             // 
             this.numericUpDown3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown3.Location = new System.Drawing.Point(425, 83);
+            this.numericUpDown3.Location = new System.Drawing.Point(457, 83);
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(36, 16);
             this.numericUpDown3.TabIndex = 36;
@@ -359,7 +359,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.SystemColors.Control;
-            this.label6.Location = new System.Drawing.Point(389, 102);
+            this.label6.Location = new System.Drawing.Point(421, 102);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(13, 13);
             this.label6.TabIndex = 35;
@@ -368,7 +368,7 @@
             // numericUpDown6
             // 
             this.numericUpDown6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown6.Location = new System.Drawing.Point(383, 83);
+            this.numericUpDown6.Location = new System.Drawing.Point(415, 83);
             this.numericUpDown6.Name = "numericUpDown6";
             this.numericUpDown6.Size = new System.Drawing.Size(36, 16);
             this.numericUpDown6.TabIndex = 34;
