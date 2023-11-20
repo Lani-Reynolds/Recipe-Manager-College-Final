@@ -298,10 +298,10 @@ namespace RecipeManager
 
             GenerateRecipePath();
 
-            foreach (string line in File.ReadAllLines(RecipeFilePath))
-            {
-                Console.WriteLine(line);
-            }
+            string[] line =  File.ReadAllLines(RecipeFilePath);
+
+            txtRecipeName.Text = line[1];
+            rtxtDescription.Text = line[4];
 
             /* Code Features */
 
