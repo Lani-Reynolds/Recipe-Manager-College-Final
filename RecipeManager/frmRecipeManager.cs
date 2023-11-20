@@ -285,30 +285,34 @@ namespace RecipeManager
 
         }
 
+
         private void lbRecipeList_SelectedValueChanged(object sender, EventArgs e)
         {
-            // Gaurd clause for if the selected item in the list box is null, do nothing - Sara Walker
+            // Guard clause for if the selected item in the list box is null, do nothing - Dominiq Holder
             if (lbRecipeList.SelectedItem == null) return;
 
-            // Clear CurrentRecipe variable - Sara Walker
+            // Clear CurrentRecipe variable - Dominiq Holder
             CurrentRecipe = "";
 
-            // Set CurrentRecipe variable to the selected item in the listbox as a string - Sara Walker
+            // Set CurrentRecipe variable to the selected item in the listbox as a string - Dominiq Holder
             CurrentRecipe = lbRecipeList.SelectedItem.ToString();
 
             GenerateRecipePath();
 
-            string[] line =  File.ReadAllLines(RecipeFilePath);
+            string[] lines = File.ReadAllLines(RecipeFilePath);
 
-            txtRecipeName.Text = line[1];
-            rtxtDescription.Text = line[4];
+            txtRecipeName.Text = lines[1];
+            rtxtDescription.Text = lines[4];
 
+            // Concatenate all lines from line 7 to the end of the document into a string array
+            string[] recipeIngredientsDirections = lines.Skip(7).ToArray();
+            string ingredientsDirectionsTwo = string.Join("", recipeIngredientsDirections);
+            Console.WriteLine(ingredientsDirectionsTwo);
+            ingredientsDirectionsTwo.Split(':');
             /* Code Features */
 
             // Load respective recipe file contents into text boxes
-
         }
-
         // This event handler is attached to the ingredients and direction richtextboxes - Sara Walker (EXTRA)
         private void rtxt_KeyDown(object sender, KeyEventArgs e)
         {
