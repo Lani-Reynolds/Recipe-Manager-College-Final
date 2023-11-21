@@ -45,13 +45,13 @@ namespace RecipeManager
             rtxtDirections.SelectionBullet = true;
         }
 
-        // Method to load file names into the listbox - Sara Walker
+        // Method to load recipe file names into the listbox - Sara Walker
         private void LoadFiles()
         {
-            // Iterate through each file in the directory - Sara Walker
+            // Iterate through each recipe file in the directory - Sara Walker
             foreach (string recipeFile in Directory.GetFiles(UserRecipesPath))
             {
-                // Construct an array of the file path split at each `\` - Sara Walker
+                // Construct an array of the recipe file path split at each `\` - Sara Walker
                 string[] recipeFileArray = recipeFile.Split('\\');
 
                 // Construct a string from the last element of the array and reformatting it to be displayed - Sara Walker
@@ -88,7 +88,7 @@ namespace RecipeManager
             rtxtDirections.Text = "";
         }
 
-        // Method to build an array to be saved in the file - Sara Walker
+        // Method to build an array to be saved in the recipe file - Sara Walker
         private string[] ArrayBuilder(RichTextBox richTextBox)
         {
             // Construct an array that is the size of the current number of lines in the richtextbox - Sara Walker
@@ -115,7 +115,7 @@ namespace RecipeManager
             return array;
         }
 
-        // Method to contruct the string of file contents - Sara Walker
+        // Method to contruct the string of recipe file contents - Sara Walker
         private string BuildContentString()
         {
             // Construct a string for the name - Aaron White
@@ -197,7 +197,6 @@ namespace RecipeManager
                 return success;
             }
             return success;
-
         }
 
         // Method to check all validations - Dominiq Holder
@@ -231,9 +230,8 @@ namespace RecipeManager
                 success = false;
                 MessageBox.Show(errorMessage, "Entry Error");
             }
-            // Add additional checks for other controls if needed - Dominiq Holder
-
-            return success; // If all checks pass, return true - Dominiq Holder
+            // If all checks pass, return true - Dominiq Holder
+            return success; 
         }
 
         private void frmRecipeManager_Load(object sender, EventArgs e)
@@ -257,8 +255,10 @@ namespace RecipeManager
             // Handle the result accordingly - Dominiq Holder
             if (clearResult == DialogResult.Yes)
             {
-                // Clear content boxes - Dominiq Holder
+                // Clear content boxes, current recipe and set selected item to null - Dominiq Holder
                 ClearContentBoxes();
+                CurrentRecipe = "";
+                lbRecipeList.SelectedItem = null;
             }
             else if (clearResult == DialogResult.Cancel)
             {
@@ -295,12 +295,12 @@ namespace RecipeManager
                 // Call GenerateRecipePath to have RecipeFilePath hold CurrentRecipe - Sara Walker
                 GenerateRecipePath();
 
-                // Check if the file exists - Aaron White
+                // Check if the recipe file exists - Aaron White
                 if (File.Exists(RecipeFilePath))
                 {
                     // Strings to display in the message box - Aaron White
-                    string msg2 = "Would you like to rewrite file?";
-                    string caption2 = "File exists";
+                    string msg2 = "Would you like to rewrite the recipe?";
+                    string caption2 = "Recipe exists";
 
                     // Yes or no buttons - Aaron White
                     MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -311,7 +311,7 @@ namespace RecipeManager
                     // If the result equals yes - Aaron White
                     if (result == DialogResult.Yes)
                     {
-                        // Write to the file, the new formatted ingredient list - Sara Walker
+                        // Write to the recipe file, the new formatted ingredient list - Sara Walker
                         File.WriteAllText(RecipeFilePath, BuildContentString());
                     }
                 }
@@ -320,7 +320,7 @@ namespace RecipeManager
                     // Add recipe name to the listbox - Sara Walker
                     lbRecipeList.Items.Add(txtRecipeName.Text);
 
-                    // Write to the file, the new formatted ingredient list - Sara Walker
+                    // Write to the recipe file, the new formatted ingredient list - Sara Walker
                     File.WriteAllText(RecipeFilePath, BuildContentString());
                 }
             }        
@@ -331,7 +331,7 @@ namespace RecipeManager
             // Call GenerateRecipePath to have RecipeFilePath hold CurrentRecipe (from SelectedValueChange) - Sara Walker
             GenerateRecipePath();
 
-            // Check if the file exists - Sara Walker
+            // Check if the recipe file exists - Sara Walker
             if (File.Exists(RecipeFilePath))
             {
                 // Strings to display in the message box - Sara Walker
@@ -344,12 +344,12 @@ namespace RecipeManager
                 // Get result from the message box - Sara Walker
                 DialogResult result = MessageBox.Show(msg, caption, buttons);
 
-                // If the result equals yes, clear the contents, delete the file, and remove the recipe name from listbox - Sara Walker
+                // If the result equals yes, clear the contents, delete the recipe file, and remove the recipe name from listbox - Sara Walker
                 if (result == DialogResult.Yes)
                 {
                     ClearContentBoxes();
 
-                    // Delete file - Sara Walker
+                    // Delete recipe file - Sara Walker
                     File.Delete(RecipeFilePath);
 
                     // Remove CurrentRecipe from the listbox - Sara Walker
@@ -359,10 +359,10 @@ namespace RecipeManager
                     lbRecipeList.SelectedItem = null;
                 }
             }
-            // If the file does not exist, display an error message - Sara Walker
+            // If the recipe file does not exist, display an error message - Sara Walker
             else
             {
-                MessageBox.Show("File not found", "Error");
+                MessageBox.Show("Recipe not found", "Error");
             }
         }
 
@@ -377,7 +377,7 @@ namespace RecipeManager
                             " or directions, just press \"CTRL + B\" to add a bullet point!", "Help");
         }
 
-        // This event handler will load the file contents into their respective areas when you select a file from the listbox - Sara Walker/Donimiq Holder
+        // This event handler will load the recipe file contents into their respective areas when you select a file from the listbox - Sara Walker/Donimiq Holder
         private void lbRecipeList_SelectedValueChanged(object sender, EventArgs e)
         {
             // Guard clause for if the selected item in the list box is null, do nothing - Dominiq Holder
@@ -395,7 +395,7 @@ namespace RecipeManager
             // Call GenerateRecipePath method - Sara Walker/Dominiq Holder
             GenerateRecipePath();
 
-            // Construct an array of all the lines in the file - Sara Walker/Dominiq Holder
+            // Construct an array of all the lines in the recipe file - Sara Walker/Dominiq Holder
             string[] lines = File.ReadAllLines(RecipeFilePath);
 
             // Set the Name textbox to the 2nd element in the lines array - Sara Wallker/Dominiq Holder

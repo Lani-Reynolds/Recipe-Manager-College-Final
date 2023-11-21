@@ -115,28 +115,28 @@
             // tsmiCreateNew
             // 
             this.tsmiCreateNew.Name = "tsmiCreateNew";
-            this.tsmiCreateNew.Size = new System.Drawing.Size(180, 22);
+            this.tsmiCreateNew.Size = new System.Drawing.Size(132, 22);
             this.tsmiCreateNew.Text = "Create New";
             this.tsmiCreateNew.Click += new System.EventHandler(this.tsmiCreateNew_Click);
             // 
             // tsmiSave
             // 
             this.tsmiSave.Name = "tsmiSave";
-            this.tsmiSave.Size = new System.Drawing.Size(180, 22);
+            this.tsmiSave.Size = new System.Drawing.Size(132, 22);
             this.tsmiSave.Text = "Save";
             this.tsmiSave.Click += new System.EventHandler(this.tsmiSave_Click);
             // 
             // tsmiDelete
             // 
             this.tsmiDelete.Name = "tsmiDelete";
-            this.tsmiDelete.Size = new System.Drawing.Size(180, 22);
+            this.tsmiDelete.Size = new System.Drawing.Size(132, 22);
             this.tsmiDelete.Text = "Delete";
             this.tsmiDelete.Click += new System.EventHandler(this.tsmiDelete_Click);
             // 
             // tsmiHelp
             // 
             this.tsmiHelp.Name = "tsmiHelp";
-            this.tsmiHelp.Size = new System.Drawing.Size(180, 22);
+            this.tsmiHelp.Size = new System.Drawing.Size(132, 22);
             this.tsmiHelp.Text = "Help";
             this.tsmiHelp.Click += new System.EventHandler(this.tsmiHelp_Click);
             // 
@@ -153,7 +153,7 @@
             // lblDescription
             // 
             this.lblDescription.AutoSize = true;
-            this.lblDescription.Location = new System.Drawing.Point(172, 124);
+            this.lblDescription.Location = new System.Drawing.Point(187, 124);
             this.lblDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(64, 14);
@@ -163,7 +163,7 @@
             // lblIngredients
             // 
             this.lblIngredients.AutoSize = true;
-            this.lblIngredients.Location = new System.Drawing.Point(172, 258);
+            this.lblIngredients.Location = new System.Drawing.Point(188, 258);
             this.lblIngredients.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIngredients.Name = "lblIngredients";
             this.lblIngredients.Size = new System.Drawing.Size(63, 14);
@@ -173,7 +173,7 @@
             // lblDirections
             // 
             this.lblDirections.AutoSize = true;
-            this.lblDirections.Location = new System.Drawing.Point(178, 391);
+            this.lblDirections.Location = new System.Drawing.Point(193, 391);
             this.lblDirections.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDirections.Name = "lblDirections";
             this.lblDirections.Size = new System.Drawing.Size(58, 14);
@@ -471,7 +471,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.OldLace;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(245)))), ((int)(((byte)(229)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(684, 524);
