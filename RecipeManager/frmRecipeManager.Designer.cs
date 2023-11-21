@@ -45,7 +45,6 @@
             this.rtxtIngredients = new System.Windows.Forms.RichTextBox();
             this.rtxtDirections = new System.Windows.Forms.RichTextBox();
             this.btnExit = new System.Windows.Forms.Button();
-            this.lblContributors = new System.Windows.Forms.Label();
             this.lblTotalTime = new System.Windows.Forms.Label();
             this.txtTotalTime = new System.Windows.Forms.TextBox();
             this.lblPrepTimeMinutes = new System.Windows.Forms.Label();
@@ -233,16 +232,6 @@
             this.btnExit.Text = "E&xit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // lblContributors
-            // 
-            this.lblContributors.AutoSize = true;
-            this.lblContributors.Location = new System.Drawing.Point(465, 9);
-            this.lblContributors.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblContributors.Name = "lblContributors";
-            this.lblContributors.Size = new System.Drawing.Size(207, 14);
-            this.lblContributors.TabIndex = 0;
-            this.lblContributors.Text = "Sara Walker, Aaron White, Dominiq Holder";
             // 
             // lblTotalTime
             // 
@@ -485,7 +474,6 @@
             this.Controls.Add(this.lblPrepTimeDays);
             this.Controls.Add(this.txtTotalTime);
             this.Controls.Add(this.lblTotalTime);
-            this.Controls.Add(this.lblContributors);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.rtxtDirections);
             this.Controls.Add(this.rtxtIngredients);
@@ -539,7 +527,6 @@
         private System.Windows.Forms.RichTextBox rtxtDirections;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.ToolStripMenuItem tsmiHelp;
-        private System.Windows.Forms.Label lblContributors;
         private System.Windows.Forms.Label lblTotalTime;
         private System.Windows.Forms.TextBox txtTotalTime;
         private System.Windows.Forms.Label lblPrepTimeMinutes;
