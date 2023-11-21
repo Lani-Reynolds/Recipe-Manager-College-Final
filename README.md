@@ -40,6 +40,11 @@
     - [x] Time Is Present
  - [x] Exit ~ Button
 
+ - [ ] Implement better time formats
+ - [ ] Themes
+ - [ ] Author saving, and loading
+ - [ ] Ctrl-+ & Ctrl-- to resize font
+
 
 
  - [ ] Extra Features

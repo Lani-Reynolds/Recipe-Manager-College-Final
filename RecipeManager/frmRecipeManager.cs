@@ -1,20 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
-using System.Text.RegularExpressions;
-using System.Runtime.Remoting.Messaging;
-using System.Xml.Linq;
-using System.Drawing.Drawing2D;
-using static System.Windows.Forms.LinkLabel;
 
 namespace RecipeManager
 {
@@ -29,6 +17,7 @@ namespace RecipeManager
             InitializeComponent();
             rtxtIngredients.SelectionBullet = true;
             rtxtDirections.SelectionBullet = true;
+            KeyPreview = true;
         }
         private void LoadFiles()
         {
@@ -85,7 +74,7 @@ namespace RecipeManager
         {
             string nameString = $"Name:\n{txtRecipeName.Text}\n";
 
-            string timeString = $"Time:\n{nudPrepTimeDays.Value}:{nudPrepTimeHours.Value}:{nudPrepTimeMinutes.Value}~{nudCookTimeDays.Value}:{nudCookTimeHours.Value}:{nudCookTimeMinutes.Value}\n";
+            string timeString = $"Time:\n{PrepDays.Text}:{PrepHours.Text}:{PrepMinutes.Text}~{CookDays}:{CookHours}:{CookMinutes}\n";
 
             string descriptionString = $"Description:\n{rtxtDescription.Text}\n";
 
@@ -199,13 +188,13 @@ namespace RecipeManager
 
         private void nud_ValueChange(object sender, EventArgs e)
         {
-            int totalMinutes = Convert.ToInt32(nudPrepTimeMinutes.Value) + Convert.ToInt32(nudCookTimeMinutes.Value);
-            int totalHours = Convert.ToInt32(nudPrepTimeHours.Value) + Convert.ToInt32(nudCookTimeHours.Value);
-            int totalDays = Convert.ToInt32(nudPrepTimeDays.Value) + Convert.ToInt32(nudCookTimeDays.Value);
+            //int totalMinutes = Convert.ToInt32(nudPrepTimeMinutes.Value) + Convert.ToInt32(nudCookTimeMinutes.Value);
+            //int totalHours = Convert.ToInt32(nudPrepTimeHours.Value) + Convert.ToInt32(nudCookTimeHours.Value);
+            //int totalDays = Convert.ToInt32(nudPrepTimeDays.Value) + Convert.ToInt32(nudCookTimeDays.Value);
 
-            TimeSpan totalTime = new TimeSpan(totalDays, totalHours, totalMinutes, 0);
+            //TimeSpan totalTime = new TimeSpan(totalDays, totalHours, totalMinutes, 0);
 
-            txtTotalTime.Text = $"{totalTime.Days}:{totalTime.Hours}:{totalTime.Minutes}";
+            //TotalTime.Text = $"{totalTime.Days}:{totalTime.Hours}:{totalTime.Minutes}";
         }
 
         private void tsmiSave_Click(object sender, EventArgs e)
@@ -354,5 +343,56 @@ namespace RecipeManager
         }
 
         private void btnExit_Click(object sender, EventArgs e) => Close();
+
+        private void frmRecipeManager_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Check if the pressed key is Escape
+            if (e.KeyCode == Keys.Escape)
+            {
+                // Close the form
+                this.Close();
+            }
+        }
+
+        private void IncrementTime(Label Label)
+        {
+            int.TryParse(Label.Text.Split(' ')[0], out int Value);
+            Value++;
+            Label.Text = Value.ToString() + $" {Label.Tag}";
+            ActiveControl = Label;
+        }
+        private void DecrementTime(Label Label)
+        {
+            int.TryParse(Label.Text.Split(' ')[0], out int Value);
+            Value--;
+            Label.Text = Value.ToString() + $" {Label.Tag}";
+            ActiveControl = Label;
+        }
+
+        private void Time_KeyDown(object sender, KeyEventArgs e)
+        {
+            Label Label = (Label)sender;
+            if (e.KeyCode == Keys.Up)
+            {
+                IncrementTime(Label);
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                DecrementTime(Label);
+            }
+        }
+        private void Time_MouseClick(object sender, MouseEventArgs e)
+        {
+            Label Label = (Label)sender;
+
+            if (e.Button == MouseButtons.Left)
+            {
+                IncrementTime(Label);
+            }
+            if (e.Button == MouseButtons.Right)
+            {
+                DecrementTime(Label);
+            }
+        }
     }
 }
