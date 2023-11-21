@@ -373,7 +373,7 @@ namespace RecipeManager
                             "When you select \"Save\", it will save your recipe. " +
                             "When you select \"Delete\" the recipe will be deleted from your computer." +
                             "\n\nThe prep time and cook time are in days, hours, and minutes." +
-                            "\n\nIf you accidentally delete a bullet point in the instructions" +
+                            "\n\nIf you accidentally delete a bullet point in the ingredients" +
                             " or directions, just press \"CTRL + B\" to add a bullet point!", "Help");
         }
 
