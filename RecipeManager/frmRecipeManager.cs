@@ -20,11 +20,17 @@ namespace RecipeManager
 {
     public partial class frmRecipeManager : Form
     {
-        /* 
-           Idea - Sara Walker
-           Design - Sara Walker 
-           Implementation - Sara Walker, Aaron White, Dominiq Holder
-           Testing - Sara Walker, Aaron White, Dominiq Holder
+        /*
+           Dominiq Holder - Implemented the following methods: IsPresent, IsValidData, and tsmiCreateNew_Click. Helped implement 
+                            the following methods: tsmiHelp_Click, lbRecipeList_SelectedValueChanged. Tested the program.
+
+           Aaron White - Helped implement the following methods: BuildContentString, tsmiSave_Click. Tested the program.
+
+           Sara Walker - Developed the idea of creating a recipe manager to create, save, and delete recipes on your computer. 
+                         Created and expanded upon the design. Implemented the following methods: LoadFiles, GenerateRecipePath, 
+                         ClearGroupBoxes, ClearContentBoxes, ArrayBuilder, BuildContentString, InsertContents, TimeIsPresent, 
+                         frmRecipeManager_Load, nud_ValueChange, tsmiSave_Click, tsmiDelete_Click, tsmiHelp_Click, 
+                         lbRecipeList_SelectedValueChanged, rtxt_KeyDown, and btnExit_Click. Tested the program.
         */
 
         // Global string of where the user's files are kept, this is usually in the %APPDATA% (C:/Users/<user>/AppData/Roaming) - Sara Walker (EXTRA)
