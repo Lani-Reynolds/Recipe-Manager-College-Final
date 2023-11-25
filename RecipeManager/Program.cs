@@ -16,7 +16,7 @@ namespace RecipeManager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmRecipeManager());
+            Application.Run(new MainForm());
         }
     }
 }
