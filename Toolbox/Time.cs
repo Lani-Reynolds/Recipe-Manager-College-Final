@@ -5,7 +5,7 @@ namespace RecipeManager
 {
     public partial class Toolbox
     {
-        public TimeSpan Update_TimeSpan(GroupBox TimeGroupBox)
+        public static TimeSpan Update_TimeSpan(GroupBox TimeGroupBox)
         {
             Label DaysLabel = (Label)TimeGroupBox.Controls[0];
             Label HoursLabel = (Label)TimeGroupBox.Controls[1];
@@ -15,7 +15,7 @@ namespace RecipeManager
             int Hours = Convert.ToInt32(HoursLabel.Text.Split(" ")[0]);
             int Minutes = Convert.ToInt32(MinutesLabel.Text.Split(" ")[0]);
 
-            TimeSpan Time = new TimeSpan(Days, Hours, Minutes, 0);
+            TimeSpan Time = new(Days, Hours, Minutes, 0);
 
             MinutesLabel.Text = Time.Minutes.ToString() + " " + MinutesLabel.Tag.ToString();
             HoursLabel.Text = Time.Hours.ToString() + " " + HoursLabel.Tag.ToString();
@@ -30,7 +30,7 @@ namespace RecipeManager
             TimeSpan TotalTimeSpan = PrepTimeSpan + CookTimeSpan;
             MF.TotalTime.Text = Format_Total_Time(TotalTimeSpan);
         }
-        public string Format_Total_Time(TimeSpan TotalTimeSpan)
+        public static string Format_Total_Time(TimeSpan TotalTimeSpan)
         {
             string FormattedTimeSpan = "";
 

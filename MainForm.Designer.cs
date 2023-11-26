@@ -480,7 +480,6 @@
         public System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         public System.Windows.Forms.RichTextBox RecipeAuthor;
         public System.Windows.Forms.RichTextBox RecipeName;
-        private System.IO.FileSystemWatcher fileSystemWatcher1;
     }
 }
 

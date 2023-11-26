@@ -6,7 +6,7 @@ namespace RecipeManager
 {
     public partial class MainForm : Form
     {
-        public string CurrentRecipe;
+        public string? CurrentRecipe;
         public Toolbox Manager;
 
         public MainForm()
@@ -37,8 +37,8 @@ namespace RecipeManager
         }
         private void Delete_Click(object Sender, EventArgs E)
         {
-            CurrentRecipe = RecipeList.SelectedItem.ToString();
-            Manager.Delete_Recipe(CurrentRecipe, this);
+            CurrentRecipe = RecipeList.SelectedItem.ToString()!;
+            Manager.Delete_Recipe(CurrentRecipe);
 
             Manager.Clear_Content_Boxes();
 
@@ -62,14 +62,14 @@ namespace RecipeManager
             if (MouseEvent.Button == MouseButtons.Left)
             {
                 GroupBox LabelGroupBox = (GroupBox)Label.Parent;
-                TextBox Input = new TextBox();
+                TextBox Input = new();
 
-                Input.KeyDown += Input_Time_KeyDown;
+                Input.KeyDown += new KeyEventHandler(Input_Time_KeyDown);
 
-                Point InputLocation = new Point(LabelGroupBox.Location.X + Label.Left, LabelGroupBox.Location.Y + Label.Bottom);
+                Point InputLocation = new(LabelGroupBox.Location.X + Label.Left, LabelGroupBox.Location.Y + Label.Bottom);
 
                 Input.Location = InputLocation;
-                Input.Size = new Size(30, 50);
+                Input.Size = new(30, 50);
                 Input.Tag = Label.Name;
 
                 Controls.Add(Input);
@@ -84,30 +84,36 @@ namespace RecipeManager
 
             Manager.Clear_Content_Boxes();
 
-            CurrentRecipe = RecipeList.SelectedItem.ToString();
+            CurrentRecipe = RecipeList.SelectedItem.ToString()!;
 
             string[] Lines = Manager.Load_File(CurrentRecipe);
 
             string DataState;
-            Control FoundControl = null;
+            Control? FoundControl = null;
 
             for (int Index = 0; Index < Lines.Length; Index++)
             {
                 if (Lines[Index][0] == ':')
                 {
-                    DataState = Lines[Index].Substring(1);
+                    DataState = Lines[Index][1..];
                     FoundControl = Controls.Find(DataState, true)[0];
                 }
                 else if (Index == (Lines.Length - 1))
                 {
-                    FoundControl.Text += Lines[Index];
+                    if (FoundControl is not null)
+                    {
+                        FoundControl.Text += Lines[Index];
+                    }
                 }
                 else
                 {
-                    FoundControl.Text += Lines[Index] + "\n";
+                    if (FoundControl is not null)
+                    {
+                        FoundControl.Text += Lines[Index] + "\n";
+                    }
                 }
             }
-            RecipeIngredients.Text = RecipeIngredients.Text.Substring(0, RecipeIngredients.Text.Length - 1);
+            RecipeIngredients.Text = RecipeIngredients.Text[0..(RecipeIngredients.Text.Length - 1)];
         }
         private void RichText_KeyDown(object Sender, KeyEventArgs KeyEvent)
         {
@@ -125,21 +131,23 @@ namespace RecipeManager
                 Close();
             }
         }
-        private void Input_Time_KeyDown(object Sender, KeyEventArgs KeyEvent)
+        private void Input_Time_KeyDown(object? Sender, KeyEventArgs KeyEvent)
         {
+            TextBox Input;
+            Label InputTimeLabel;
             if (KeyEvent.KeyCode == Keys.Enter)
             {
                 KeyEvent.SuppressKeyPress = true;
 
-                TextBox Input = (TextBox)Sender;
-                Label InputTimeLabel = (Label)Controls.Find(Input.Tag.ToString(), true)[0];
-                GroupBox TimeGroupBox = (GroupBox)InputTimeLabel.Parent;
+                if (Sender is not null)
+                {
+                    Input = (TextBox)Sender;
+                    InputTimeLabel = (Label)Controls.Find(Input.Tag.ToString(), true)[0];
+                    InputTimeLabel.Text = $"{Input.Text} {InputTimeLabel.Tag}";
+                    Manager.Update_Times();
+                    Controls.Remove(Input);
+                }    
 
-                InputTimeLabel.Text = $"{Input.Text} {InputTimeLabel.Tag}";
-
-                Manager.Update_Times();
-
-                Controls.Remove(Input);
             }
         }
         private void Time_Leave(object Sender, EventArgs E)
@@ -150,7 +158,7 @@ namespace RecipeManager
     }
     public partial class Toolbox
     {
-        private MainForm MF;
+        public MainForm MF;
         public Toolbox(MainForm MFPassed)
         {
             MF = MFPassed;

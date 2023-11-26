@@ -1,0 +1,6 @@
+C:\Users\rldre\Documents\GitHub\RecipeManager\bin\Release\net6.0-windows7.0\win-x86\app.publish\Recipsio.exe
+C:\Users\rldre\Documents\GitHub\RecipeManager\bin\Release\net6.0-windows7.0\win-x86\app.publish\Recipsio.dll
+C:\Users\rldre\Documents\GitHub\RecipeManager\bin\Release\net6.0-windows7.0\win-x86\app.publish\Recipsio.deps.json
+C:\Users\rldre\Documents\GitHub\RecipeManager\bin\Release\net6.0-windows7.0\win-x86\app.publish\Recipsio.runtimeconfig.json
+C:\Users\rldre\Documents\GitHub\RecipeManager\bin\Release\net6.0-windows7.0\win-x86\app.publish\Recipsio.dll.config
+C:\Users\rldre\Documents\GitHub\RecipeManager\bin\Release\net6.0-windows7.0\win-x86\app.publish\Recipsio.pdb

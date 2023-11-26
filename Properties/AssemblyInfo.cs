@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("RecipeManager")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Recipsio")]
+[assembly: AssemblyDescription("A recipe manager application by DeForrest Studios.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("RecipeManager")]
+[assembly: AssemblyCompany("DeForrest Studios")]
+[assembly: AssemblyProduct("Recipsio")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

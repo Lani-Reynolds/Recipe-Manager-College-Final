@@ -8,7 +8,7 @@ namespace RecipeManager
 {
     public partial class Toolbox
     {
-        public string RecipeFilePath;
+        public string? RecipeFilePath;
         public string UserRecipesPath = Application.UserAppDataPath;
         public void Load_Files(ref ListBox RecipeList)
         {
@@ -26,7 +26,7 @@ namespace RecipeManager
 
             return File.ReadAllLines(RecipeFilePath);
         }
-        public string Build_File_Formatted_String(MainForm RM)
+        public static string Build_File_Formatted_String(MainForm RM)
         {
             string NameString = $":RecipeName\n{RM.RecipeName.Text}";
 
@@ -48,7 +48,10 @@ namespace RecipeManager
                                                                      MessageBoxButtons.YesNo);
                 if (Result == DialogResult.Yes)
                 {
-                    RecipeFilePath = $"{UserRecipesPath}\\{RM.CurrentRecipe.Replace(" ", "-")}.recipe";
+                    if (RM.CurrentRecipe is not null)
+                    {
+                        RecipeFilePath = $"{UserRecipesPath}\\{RM.CurrentRecipe.Replace(" ", "-")}.recipe";
+                    }
                     File.WriteAllText(RecipeFilePath, Build_File_Formatted_String(RM));
                     return "Old";
                 }
@@ -62,7 +65,7 @@ namespace RecipeManager
             return "Failure";
         }
 
-        public void Delete_Recipe(string CurrentRecipe, MainForm RecipeManager)
+        public void Delete_Recipe(string CurrentRecipe)
         {
             RecipeFilePath = $"{UserRecipesPath}\\{CurrentRecipe.Replace(" ", "-")}.recipe";
             if (File.Exists(RecipeFilePath))
