@@ -13,11 +13,13 @@ namespace RecipeManager
         {
             InitializeComponent();
             Manager = new Toolbox(this);
+            Manager.Generate_User_Directories();
             Manager.Load_Files(ref RecipeList);
             RecipeIngredients.SelectionBullet = true;
             RecipeDirections.SelectionBullet = true;
             KeyPreview = true;
         }
+
         private void CreateNew_Click(object Sender, EventArgs E)
         {
             Manager.Clear_Content_Boxes();

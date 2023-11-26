@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
@@ -8,13 +7,22 @@ namespace RecipeManager
 {
     public partial class Toolbox
     {
-        public string? RecipeFilePath;
-        public string UserRecipesPath = Application.UserAppDataPath;
+        public string? RecipeFile;
+        public static readonly string RecipsioFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Recipsio");
+        public static readonly string RecipsioRecipesFolder = Path.Combine(RecipsioFolder, "Recipes");
+
+        public void Generate_User_Directories()
+        {
+            Directory.CreateDirectory(RecipsioFolder);
+            Directory.CreateDirectory(RecipsioRecipesFolder);
+        }
+
         public void Load_Files(ref ListBox RecipeList)
         {
-            foreach (string RecipeFile in Directory.GetFiles(UserRecipesPath))
+            foreach (string RecipeFile in Directory.GetFiles(RecipsioRecipesFolder))
             {
-                string RecipeFileString = Path.GetRelativePath(UserRecipesPath, RecipeFile).Replace("-", " ").Replace(".recipe", "");
+                Debug.WriteLine(RecipeFile);
+                string RecipeFileString = Path.GetRelativePath(RecipsioRecipesFolder, RecipeFile).Replace("-", " ").Replace(".recipe", "");
 
                 RecipeList.Items.Add(RecipeFileString);
             }
@@ -22,9 +30,9 @@ namespace RecipeManager
 
         public string[] Load_File(string CurrentRecipe)
         {
-            RecipeFilePath = $"{UserRecipesPath}\\{CurrentRecipe.Replace(" ", "-")}.recipe";
+            RecipeFile = $"{RecipsioRecipesFolder}\\{CurrentRecipe.Replace(" ", "-")}.recipe";
 
-            return File.ReadAllLines(RecipeFilePath);
+            return File.ReadAllLines(RecipeFile);
         }
         public static string Build_File_Formatted_String(MainForm RM)
         {
@@ -41,7 +49,7 @@ namespace RecipeManager
 
         public string Save_Recipe(string RecipeName, MainForm RM)
         {
-            if (File.Exists(RecipeFilePath))
+            if (File.Exists(RecipsioRecipesFolder))
             {
                 DialogResult Result = Send_Message_Box("Would you like to rewrite the recipe?",
                                                                      "Recipe exists",
@@ -50,16 +58,16 @@ namespace RecipeManager
                 {
                     if (RM.CurrentRecipe is not null)
                     {
-                        RecipeFilePath = $"{UserRecipesPath}\\{RM.CurrentRecipe.Replace(" ", "-")}.recipe";
+                        RecipeFile = $"{RecipsioRecipesFolder}\\{RM.CurrentRecipe.Replace(" ", "-")}.recipe";
                     }
-                    File.WriteAllText(RecipeFilePath, Build_File_Formatted_String(RM));
+                    File.WriteAllText(RecipeFile!, Build_File_Formatted_String(RM));
                     return "Old";
                 }
             }
             else
             {
-                RecipeFilePath = $"{UserRecipesPath}\\{RecipeName.Replace(" ", "-")}.recipe";
-                File.WriteAllText(RecipeFilePath, Build_File_Formatted_String(RM));
+                RecipeFile = $"{RecipsioRecipesFolder}\\{RecipeName.Replace(" ", "-")}.recipe";
+                File.WriteAllText(RecipeFile, Build_File_Formatted_String(RM));
                 return "New";
             }
             return "Failure";
@@ -67,15 +75,15 @@ namespace RecipeManager
 
         public void Delete_Recipe(string CurrentRecipe)
         {
-            RecipeFilePath = $"{UserRecipesPath}\\{CurrentRecipe.Replace(" ", "-")}.recipe";
-            if (File.Exists(RecipeFilePath))
+            RecipeFile = $"{RecipsioRecipesFolder}\\{CurrentRecipe.Replace(" ", "-")}.recipe";
+            if (File.Exists(RecipeFile))
             {
                 DialogResult Result = Send_Message_Box("Are you sure you would like to delete this recipe?",
                                                                      "Delete Recipe",
                                                                      MessageBoxButtons.YesNo);
                 if (Result == DialogResult.Yes)
                 {
-                    File.Delete(RecipeFilePath);
+                    File.Delete(RecipeFile);
                 }
             }
             else
