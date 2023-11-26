@@ -1,6 +1,0 @@
-C:\Users\rldre\Desktop\RecipsioBuilds\RecipeManager.exe
-C:\Users\rldre\Desktop\RecipsioBuilds\RecipeManager.dll
-C:\Users\rldre\Desktop\RecipsioBuilds\RecipeManager.deps.json
-C:\Users\rldre\Desktop\RecipsioBuilds\RecipeManager.runtimeconfig.json
-C:\Users\rldre\Desktop\RecipsioBuilds\RecipeManager.dll.config
-C:\Users\rldre\Desktop\RecipsioBuilds\RecipeManager.pdb
