@@ -1,0 +1,11 @@
+C:\Users\rldre\Documents\GitHub\RecipeManager\RecipeManager\bin\Debug\RecipeManager.exe.config
+C:\Users\rldre\Documents\GitHub\RecipeManager\RecipeManager\bin\Debug\RecipeManager.exe
+C:\Users\rldre\Documents\GitHub\RecipeManager\RecipeManager\bin\Debug\RecipeManager.pdb
+C:\Users\rldre\Documents\GitHub\RecipeManager\RecipeManager\obj\Debug\RecipeManager.csproj.AssemblyReference.cache
+C:\Users\rldre\Documents\GitHub\RecipeManager\RecipeManager\obj\Debug\RecipeManager.Properties.Resources.resources
+C:\Users\rldre\Documents\GitHub\RecipeManager\RecipeManager\obj\Debug\RecipeManager.csproj.GenerateResource.cache
+C:\Users\rldre\Documents\GitHub\RecipeManager\RecipeManager\obj\Debug\RecipeManager.csproj.CoreCompileInputs.cache
+C:\Users\rldre\Documents\GitHub\RecipeManager\RecipeManager\obj\Debug\RecipeManager.exe
+C:\Users\rldre\Documents\GitHub\RecipeManager\RecipeManager\obj\Debug\RecipeManager.pdb
+C:\Users\rldre\Documents\GitHub\RecipeManager\RecipeManager\obj\Debug\RecipeManager.EmptyFormattingForm.resources
+C:\Users\rldre\Documents\GitHub\RecipeManager\RecipeManager\obj\Debug\RecipeManager.RecipeManager.resources
